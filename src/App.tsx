@@ -1,4 +1,5 @@
 import Navigation from './components/navigation'
+import Products from './components/products'
 import Sidebar from './components/sidebar'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <>
       <Sidebar handleChange={handleChange} />
       <Navigation />
+      <Products />
     </>
   )
 }
