@@ -6,6 +6,7 @@ import {
   AiOutlineClose,
 } from 'react-icons/ai'
 import * as S from './styles'
+import Cart from '../Cart'
 
 export type NavigationProps = {
   handleInputChange: (event: {
@@ -62,6 +63,7 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
           <AiOutlineUserAdd className="nav-icons" />
         </a>
       </S.Profile>
+      <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} />
     </S.Navigation>
   )
 }
