@@ -1,13 +1,26 @@
-import { useState } from 'react'
+import { SetStateAction, useState } from 'react'
 import { FiHeart } from 'react-icons/fi'
-import { AiOutlineShoppingCart, AiOutlineUserAdd } from 'react-icons/ai'
-
+import {
+  AiOutlineShoppingCart,
+  AiOutlineUserAdd,
+  AiOutlineClose,
+} from 'react-icons/ai'
 import * as S from './styles'
 
-function Navigation() {
-  const [showFilter, setShowFilter] = useState(false)
+export type NavigationProps = {
+  handleInputChange: (event: {
+    target: { value: SetStateAction<string> }
+  }) => void
+  query: string
+}
 
-  const handleCartClick = () => {}
+function Navigation({ handleInputChange, query }: NavigationProps) {
+  const [showFilter, setShowFilter] = useState(false)
+  const [cartIsVisible, setCartIsVisible] = useState(false)
+
+  const handleCartClick = () => {
+    setCartIsVisible(true)
+  }
 
   return (
     <S.Navigation>
@@ -16,6 +29,8 @@ function Navigation() {
         <S.SearchInput
           className="search-input"
           type="text"
+          onChange={handleInputChange}
+          value={query}
           placeholder="Enter your search shoes."
         />
       </div>
@@ -25,6 +40,7 @@ function Navigation() {
           <>
             <div className="content">
               <p>Fiters</p>
+              <AiOutlineClose onClick={() => setShowFilter(false)} />
             </div>
             <div>
               <p>Category</p>

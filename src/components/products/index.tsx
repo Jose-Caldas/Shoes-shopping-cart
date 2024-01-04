@@ -1,15 +1,13 @@
+import React from 'react'
 import * as S from './styles'
-import products from '../../data/product'
-import Card from '../Card'
 
-function Products() {
+type ProductsProps = {
+  result: React.ReactNode
+}
+function Products({ result }: ProductsProps) {
   return (
     <S.Container>
-      <S.Products>
-        {products.map((product) => (
-          <Card key={product.id} product={product} />
-        ))}
-      </S.Products>
+      <S.Products>{result}</S.Products>
     </S.Container>
   )
 }

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div``
 
 export const Products = styled.section`
+  max-width: 1600px;
   display: flex;
   flex-wrap: wrap;
   margin-left: 20rem;
