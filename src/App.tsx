@@ -1,8 +1,14 @@
+import Navigation from './components/navigation'
+import Sidebar from './components/sidebar'
+
 function App() {
+  const handleChange = () => {}
+
   return (
-    <div className="App">
-      <h1>Shopping - shoes</h1>
-    </div>
+    <>
+      <Sidebar handleChange={handleChange} />
+      <Navigation />
+    </>
   )
 }
 
