@@ -1,39 +1,58 @@
 import { useSelector } from 'react-redux'
-import { selectProductsTotalPrice } from '../../app/cartSelectors'
+import {
+  selectProductsCount,
+  selectProductsTotalPrice,
+} from '../../app/cartSelectors'
 import { useAppSelector } from '../../app/hooks'
 import CartItem from '../cartItem'
 import * as S from './styles'
+import { AiOutlineShoppingCart, AiOutlineArrowLeft } from 'react-icons/ai'
 
-interface CartProps {
-  isVisible: boolean
-  setIsVisible: (isVisible: boolean) => void
-}
-
-const Cart = ({ isVisible, setIsVisible }: CartProps) => {
+const Cart = () => {
   const { products } = useAppSelector((state) => state.cart)
   const productsTotalPrice = useSelector(selectProductsTotalPrice)
-  const handleEscapeAreaClick = () => setIsVisible(false)
+
+  const productsCount = useAppSelector(selectProductsCount)
 
   return (
-    <S.CartContainer isvisible={isVisible}>
-      <S.CartEscapeArea onClick={handleEscapeAreaClick} />
+    <S.CartContainer>
+      <S.Header>
+        <S.HeaderContent>
+          <S.Logo to="/">SH🛒PPING</S.Logo>
+          <S.CartView to="/cart">
+            <AiOutlineShoppingCart size={20} />
+            <p>({productsCount})</p>
+          </S.CartView>
+        </S.HeaderContent>
+      </S.Header>
       <S.CartContent>
-        <S.CartHeader>
-          <S.CartTitle>Seu Carrinho</S.CartTitle>
-          <button onClick={() => setIsVisible(false)}>Fechar</button>
-        </S.CartHeader>
-        {products.length > 0 ? (
-          products.map((product) => (
-            <CartItem key={product.id} product={product} />
-          ))
-        ) : (
-          <p>Carrinho vazio!</p>
-        )}
-        {products.length > 0 && (
-          <S.CartTotal>
-            <span>Valor Total da Compra:</span> R$ {productsTotalPrice}
-          </S.CartTotal>
-        )}
+        <S.CartTitle>Shopping Cart</S.CartTitle>
+        <S.ProductContainer>
+          {products.length > 0 ? (
+            products.map((product) => (
+              <CartItem key={product.id} product={product} />
+            ))
+          ) : (
+            <>
+              <p>Empty cart!</p>
+              <S.ReturnShop to="/">
+                <AiOutlineArrowLeft size={20} />
+                <p>Return Shopping</p>
+              </S.ReturnShop>
+            </>
+          )}
+          {products.length > 0 && (
+            <S.CartTotal>
+              <div>
+                <span>Total Purchase:</span> R$ {productsTotalPrice}
+              </div>
+              <S.ReturnShop to="/">
+                <AiOutlineArrowLeft size={20} />
+                <p>Continue Shopping</p>
+              </S.ReturnShop>
+            </S.CartTotal>
+          )}
+        </S.ProductContainer>
       </S.CartContent>
     </S.CartContainer>
   )

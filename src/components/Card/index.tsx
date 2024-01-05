@@ -5,7 +5,6 @@ import { useAppDispatch } from '../../app/hooks'
 import { addProduct } from '../../features/cart/cartSlice'
 import { AiFillStar } from 'react-icons/ai'
 import { IProduct } from '../../interface'
-import CustomButton from '../customButton'
 
 export interface CardProps {
   product: IProduct
@@ -36,10 +35,10 @@ function Card({ product }: CardProps) {
             <del>${product.prevPrice},00</del>
             <span>{product.newPrice}</span>
           </S.Price>
-
-          <CustomButton startIcon={<BsCartPlus />} onClick={handleProductClick}>
-            Add Cart
-          </CustomButton>
+          <S.AddCart to="/cart" onClick={handleProductClick}>
+            <BsCartPlus />
+            Add To Cart
+          </S.AddCart>
         </S.CardPrice>
       </S.CardDetails>
     </S.CardContainer>

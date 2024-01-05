@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const CardContainer = styled.section`
@@ -74,5 +75,31 @@ export const Price = styled.div`
   span {
     margin-left: 10px;
     font-weight: 600;
+  }
+`
+
+export const AddCart = styled(Link)`
+  width: 100%;
+  background-color: transparent;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  margin-top: 1rem;
+  padding: 10px;
+  font-weight: 600;
+  transition: all 0.5s ease;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #252422;
+    color: white;
+  }
+
+  svg {
+    margin-right: 0.5rem;
   }
 `

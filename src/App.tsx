@@ -36,12 +36,10 @@ function App() {
   function filteredData(products: IProduct[], selected: string, query: string) {
     let filteredProducts = products
 
-    // Filtering Input Items
     if (query) {
       filteredProducts = filteredItems
     }
 
-    // Applying selected filter
     if (selected) {
       filteredProducts = filteredProducts.filter(
         ({ category, color, company, newPrice, title }) =>
@@ -54,9 +52,7 @@ function App() {
     }
 
     return filteredProducts.map((product) => (
-      <div>
-        <Card key={product.id} product={product} />
-      </div>
+      <Card key={product.id} product={product} />
     ))
   }
 

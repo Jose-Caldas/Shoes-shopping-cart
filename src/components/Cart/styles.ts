@@ -1,25 +1,7 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-type CartContainerProps = {
-  isvisible: boolean
-}
-
-export const CartContainer = styled.div<CartContainerProps>`
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: flex-end;
-  visibility: ${(props) => (props.isvisible ? 'visible' : 'hidden')};
-  opacity: ${(props) => (props.isvisible ? '1' : '0')};
-  transition: all 0.3s ease;
-  z-index: 999;
-
+export const CartContainer = styled.div`
   p {
     color: #222222;
   }
@@ -29,27 +11,35 @@ export const CartContainer = styled.div<CartContainerProps>`
   }
 `
 
-export const CartEscapeArea = styled.div`
-  width: 100%;
-`
-
 export const CartContent = styled.div`
-  height: 100%;
-  min-width: 500px;
-  z-index: 200;
-  background-color: white;
   padding: 20px;
-  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   @media (max-width: 768px) {
     min-width: 100%;
   }
 `
+
+export const ProductContainer = styled.div`
+  width: 100%;
+  padding: 0 6rem;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+`
+
 export const CartTitle = styled.p`
   font-size: 1.325rem;
   font-weight: 600;
+  margin-bottom: 2rem;
 `
+
 export const CartTotal = styled.p`
+  display: flex;
+  justify-content: space-around;
   font-weight: 600;
   font-size: 1.125rem;
 
@@ -61,7 +51,6 @@ export const CartTotal = styled.p`
 export const CartHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 2rem;
 
   button {
@@ -72,4 +61,36 @@ export const CartHeader = styled.div`
 
     cursor: pointer;
   }
+`
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 2rem;
+`
+
+export const Logo = styled(Link)`
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #222;
+`
+
+export const HeaderContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1600px;
+`
+
+export const CartView = styled(Link)`
+  display: flex;
+  text-decoration: none;
+`
+
+export const ReturnShop = styled(Link)`
+  display: flex;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #444444;
 `

@@ -6,7 +6,6 @@ import {
   AiOutlineClose,
 } from 'react-icons/ai'
 import * as S from './styles'
-import Cart from '../Cart'
 import { selectProductsCount } from '../../app/cartSelectors'
 import { useAppSelector } from '../../app/hooks'
 
@@ -19,13 +18,8 @@ export type NavigationProps = {
 
 function Navigation({ handleInputChange, query }: NavigationProps) {
   const [showFilter, setShowFilter] = useState(false)
-  const [cartIsVisible, setCartIsVisible] = useState(false)
 
   const productsCount = useAppSelector(selectProductsCount)
-
-  const handleCartClick = () => {
-    setCartIsVisible(true)
-  }
 
   return (
     <S.Navigation>
@@ -59,7 +53,7 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
         <a href="/">
           <FiHeart className="nav-icons" />
         </a>
-        <S.CartView onClick={handleCartClick}>
+        <S.CartView to="/cart">
           <AiOutlineShoppingCart className="nav-icons" />
           <p>({productsCount})</p>
         </S.CartView>
@@ -67,7 +61,6 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
           <AiOutlineUserAdd className="nav-icons" />
         </a>
       </S.Profile>
-      <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} />
     </S.Navigation>
   )
 }
