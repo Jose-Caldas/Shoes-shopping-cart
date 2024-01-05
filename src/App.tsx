@@ -53,7 +53,11 @@ function App() {
       )
     }
 
-    return filteredProducts.map((product) => <Card product={product} />)
+    return filteredProducts.map((product) => (
+      <div>
+        <Card key={product.id} product={product} />
+      </div>
+    ))
   }
 
   const result = filteredData(products, selectedCategory, query)

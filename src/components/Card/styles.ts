@@ -4,25 +4,33 @@ export const CardContainer = styled.section`
   margin: 20px;
   border: 2px solid #ededed;
   padding: 20px;
+  width: 270px;
+  height: 400px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  border-radius: 4px;
 
   .card-img {
-    width: 13rem;
+    width: 12rem;
     margin-bottom: 1rem;
   }
 
   @media screen and (max-width: 768px) {
     width: 100%;
+
+    height: 200px;
     flex-direction: row;
     gap: 2rem;
   }
 
   @media screen and (max-width: 510px) {
     width: 100%;
+    height: 400px;
     flex-direction: column;
     gap: 0;
   }
@@ -49,6 +57,7 @@ export const CardReviews = styled.span`
 
 export const CardPrice = styled.section`
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
 `
@@ -65,12 +74,5 @@ export const Price = styled.div`
   span {
     margin-left: 10px;
     font-weight: 600;
-    /* color: green; */
-  }
-`
-
-export const Bag = styled.div`
-  .bag-icon {
-    color: #535353;
   }
 `

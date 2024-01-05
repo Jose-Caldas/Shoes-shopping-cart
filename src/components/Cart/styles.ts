@@ -18,6 +18,7 @@ export const CartContainer = styled.div<CartContainerProps>`
   visibility: ${(props) => (props.isvisible ? 'visible' : 'hidden')};
   opacity: ${(props) => (props.isvisible ? '1' : '0')};
   transition: all 0.3s ease;
+  z-index: 999;
 
   p {
     color: #222222;

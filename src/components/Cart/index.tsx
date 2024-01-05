@@ -1,3 +1,7 @@
+import { useSelector } from 'react-redux'
+import { selectProductsTotalPrice } from '../../app/cartSelectors'
+import { useAppSelector } from '../../app/hooks'
+import CartItem from '../cartItem'
 import * as S from './styles'
 
 interface CartProps {
@@ -6,6 +10,8 @@ interface CartProps {
 }
 
 const Cart = ({ isVisible, setIsVisible }: CartProps) => {
+  const { products } = useAppSelector((state) => state.cart)
+  const productsTotalPrice = useSelector(selectProductsTotalPrice)
   const handleEscapeAreaClick = () => setIsVisible(false)
 
   return (
@@ -16,10 +22,18 @@ const Cart = ({ isVisible, setIsVisible }: CartProps) => {
           <S.CartTitle>Seu Carrinho</S.CartTitle>
           <button onClick={() => setIsVisible(false)}>Fechar</button>
         </S.CartHeader>
-
-        <S.CartTotal>
-          <span>Valor Total da Compra:</span> R$
-        </S.CartTotal>
+        {products.length > 0 ? (
+          products.map((product) => (
+            <CartItem key={product.id} product={product} />
+          ))
+        ) : (
+          <p>Carrinho vazio!</p>
+        )}
+        {products.length > 0 && (
+          <S.CartTotal>
+            <span>Valor Total da Compra:</span> R$ {productsTotalPrice}
+          </S.CartTotal>
+        )}
       </S.CartContent>
     </S.CartContainer>
   )

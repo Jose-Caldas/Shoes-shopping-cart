@@ -7,6 +7,8 @@ import {
 } from 'react-icons/ai'
 import * as S from './styles'
 import Cart from '../Cart'
+import { selectProductsCount } from '../../app/cartSelectors'
+import { useAppSelector } from '../../app/hooks'
 
 export type NavigationProps = {
   handleInputChange: (event: {
@@ -18,6 +20,8 @@ export type NavigationProps = {
 function Navigation({ handleInputChange, query }: NavigationProps) {
   const [showFilter, setShowFilter] = useState(false)
   const [cartIsVisible, setCartIsVisible] = useState(false)
+
+  const productsCount = useAppSelector(selectProductsCount)
 
   const handleCartClick = () => {
     setCartIsVisible(true)
@@ -57,7 +61,7 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
         </a>
         <S.CartView onClick={handleCartClick}>
           <AiOutlineShoppingCart className="nav-icons" />
-          <p>(0)</p>
+          <p>({productsCount})</p>
         </S.CartView>
         <a href="/">
           <AiOutlineUserAdd className="nav-icons" />
