@@ -8,7 +8,7 @@ export const Sidebar = styled.section`
   border-right: 2px solid #e5e5e5;
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
+
   gap: 20px;
 
   @media screen and (max-width: 768px) {
@@ -16,13 +16,20 @@ export const Sidebar = styled.section`
   }
 `
 
+export const FilterContainer = styled.div`
+  margin-left: 30px;
+`
+
 export const LogoContainer = styled.div`
   margin-bottom: 4rem;
+  background-color: #222222;
+  padding-bottom: 20px;
+  padding-left: 2rem;
 
   h1 {
     font-size: 1.5rem;
     text-decoration: none;
-    color: #222;
+    color: #fff;
     font-weight: normal;
     margin-top: 1.5rem;
   }

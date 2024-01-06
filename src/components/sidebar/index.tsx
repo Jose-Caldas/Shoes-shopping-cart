@@ -14,9 +14,11 @@ function Sidebar({ handleChange }: SidebarProps) {
         <S.LogoContainer>
           <h1 className="sidebar-title">SH🛒PPING</h1>
         </S.LogoContainer>
-        <Category handleChange={handleChange} />
-        <Price handleChange={handleChange} />
-        <Colors handleChange={handleChange} />
+        <S.FilterContainer>
+          <Category handleChange={handleChange} />
+          <Price handleChange={handleChange} />
+          <Colors handleChange={handleChange} />
+        </S.FilterContainer>
       </S.Sidebar>
     </>
   )

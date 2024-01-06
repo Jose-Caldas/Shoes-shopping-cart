@@ -1,64 +1,92 @@
 import styled from 'styled-components'
 
-export const CartItemContainer = styled.div`
+export const CartContainer = styled.section`
+  width: 100%;
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  padding: 10px;
-
-  p {
-    color: #222222;
-  }
+  justify-content: center;
 `
+export const Content = styled.div`
+  width: 100%;
 
-export const CartItemImage = styled.div`
-  display: flex;
-  align-items: center;
-  border-radius: 10px;
+  .cart-item,
+  .titles {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    column-gap: 0.5rem;
+  }
 
-  img {
-    padding: 10px;
+  .cart-item {
+    border-top: 1px solid #eee;
+    padding: 1rem 0;
+  }
+
+  .titles .product-title {
+    padding-left: 0.5rem;
+  }
+
+  .titles .total {
+    padding-right: 0.5rem;
+    justify-self: right;
+  }
+
+  .cart-item .cart-product {
+    display: flex;
+  }
+
+  .rating-star {
+    color: #d5ab55;
+  }
+
+  .cart-item .cart-product img {
     width: 10rem;
-  }
-`
-
-export const CartItemInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-  flex: 1;
-
-  p:nth-child(1) {
-    font-weight: 600;
-    margin-bottom: 5px;
+    max-width: 100%;
+    margin-right: 1rem;
   }
 
-  p:nth-child(2) {
-    font-weight: 500;
-  }
-`
-
-export const CartItemQuantity = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-
-  p {
-    margin-left: 10px;
-    margin-right: 10px;
+  .cart-item .cart-product h3 {
+    font-weight: 400;
   }
 
-  svg:hover {
+  .cart-item .cart-product button {
+    border: none;
+    outline: none;
+    margin-top: 0.7rem;
     cursor: pointer;
+    background: none;
+    color: gray;
+
+    &:hover {
+      color: black;
+    }
   }
-`
 
-export const RemoveButton = styled.div`
-  margin-right: 20px;
+  .cart-product-quantity {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 130px;
+    max-width: 100%;
+    border: 1px solid rgb(177, 177, 177);
+    border-radius: 5px;
 
-  &:hover {
-    cursor: pointer;
+    button {
+      border: none;
+      outline: none;
+      background: none;
+      padding: 0.7rem 1.5rem;
+      cursor: pointer;
+    }
+
+    .count {
+      padding: 0.7rem 0;
+    }
+  }
+
+  .cart-product-total-price {
+    justify-self: right;
+    padding-right: 0.5rem;
+    font-weight: bold;
   }
 `

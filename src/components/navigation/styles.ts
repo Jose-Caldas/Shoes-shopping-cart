@@ -6,9 +6,7 @@ export const Navigation = styled.section`
   justify-content: space-around;
   align-items: center;
   padding: 20px;
-  margin-left: 2rem;
-  border-bottom: 2px solid #f3f3f3;
-  z-index: 999;
+  background-color: #222222;
 
   .nav-container {
     display: flex;
@@ -58,6 +56,16 @@ export const MobileMenu = styled.button`
 
 export const Profile = styled.div`
   display: flex;
+
+  color: #fff;
+
+  p {
+    color: #fff;
+  }
+
+  .nav-icons {
+    color: #fff;
+  }
 
   @media screen and (max-width: 768px) {
     display: none;

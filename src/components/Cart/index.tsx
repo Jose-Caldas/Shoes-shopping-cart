@@ -4,11 +4,12 @@ import {
   selectProductsTotalPrice,
 } from '../../app/cartSelectors'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import CartItem from '../cartItem'
 import * as S from './styles'
 import { AiOutlineShoppingCart, AiOutlineArrowLeft } from 'react-icons/ai'
-import Button from '../button'
 import { clearCart } from '../../features/cart/cartSlice'
+import EmptyCart from '../emptyCart'
+import { Link } from 'react-router-dom'
+import CartItem from '../cartItem'
 
 const Cart = () => {
   const { products } = useAppSelector((state) => state.cart)
@@ -27,41 +28,46 @@ const Cart = () => {
         <S.HeaderContent>
           <S.Logo to="/">SH🛒PPING</S.Logo>
           <S.CartView to="/cart">
-            <AiOutlineShoppingCart size={20} />
+            <AiOutlineShoppingCart color="#fff" size={20} />
             <p>({productsCount})</p>
           </S.CartView>
         </S.HeaderContent>
       </S.Header>
-      <S.CartContent>
-        <S.CartTitle>Shopping Cart</S.CartTitle>
-        <S.ProductContainer>
-          {products.length > 0 ? (
-            products.map((product) => (
-              <CartItem key={product.id} product={product} />
-            ))
-          ) : (
-            <>
-              <p>Empty cart!</p>
-              <S.ReturnShop to="/">
-                <AiOutlineArrowLeft size={20} />
-                <p>Return Shopping</p>
-              </S.ReturnShop>
-            </>
-          )}
-          {products.length > 0 && (
-            <S.CartTotal>
-              <div>
-                <span>Total Purchase:</span> R$ {productsTotalPrice}
+      <S.CartTitle>Shopping Cart</S.CartTitle>
+      {products.length > 0 ? (
+        <div className="list-container">
+          <div className="titles">
+            <h3 className="product-title">Product</h3>
+            <h3 className="price">Price</h3>
+            <h3 className="quantity">Quantity</h3>
+            <h3 className="total">Subtotal</h3>
+          </div>
+          {products.map((product) => (
+            <CartItem key={product.id} product={product} />
+          ))}
+          <div className="cart-summary">
+            <button className="clear-cart" onClick={handleClearCart}>
+              Clear Cart
+            </button>
+            <div className="cart-checkout">
+              <div className="subtotal">
+                <span>Purchase Total</span>
+                <span className="amount">${productsTotalPrice}</span>
               </div>
-              <Button title="Clear Cart" onClickHandler={handleClearCart} />
-              <S.ReturnShop to="/">
-                <AiOutlineArrowLeft size={20} />
-                <p>Continue Shopping</p>
-              </S.ReturnShop>
-            </S.CartTotal>
-          )}
-        </S.ProductContainer>
-      </S.CartContent>
+              <p>Taxes and shipping calculated at checkout</p>
+              <button>Check Out</button>
+              <div className="continue-shopping">
+                <Link to="/">
+                  <AiOutlineArrowLeft size={20} />
+                  <span>Continue Shop</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <EmptyCart />
+      )}
     </S.CartContainer>
   )
 }

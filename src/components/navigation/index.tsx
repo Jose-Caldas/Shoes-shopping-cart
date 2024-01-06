@@ -54,7 +54,7 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
           <FiHeart className="nav-icons" />
         </a>
         <S.CartView to="/cart">
-          <AiOutlineShoppingCart className="nav-icons" />
+          <AiOutlineShoppingCart color="#fff" className="nav-icons" />
           <p>({productsCount})</p>
         </S.CartView>
         <a href="/">

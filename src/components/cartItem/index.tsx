@@ -1,19 +1,18 @@
-import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from 'react-icons/ai'
-
-import * as S from './styles'
 import { useAppDispatch } from '../../app/hooks'
+import { AiFillStar } from 'react-icons/ai'
+import * as S from './styles'
 import {
   decreaseProductQuantity,
   increaseProductQuantity,
   removeProductFromCart,
 } from '../../features/cart/cartSlice'
-import { IProduct } from '../../interface/index'
+import { IProduct } from '../../interface'
 
-export interface CartItemProps {
+export interface CartPageProps {
   product: IProduct
 }
 
-function CartItem({ product }: CartItemProps) {
+function CartItem({ product }: CartPageProps) {
   const dispatch = useAppDispatch()
 
   const handleRemoveClick = () => {
@@ -29,37 +28,39 @@ function CartItem({ product }: CartItemProps) {
   }
 
   return (
-    <S.CartItemContainer>
-      <S.CartItemImage>
-        <img src={product.img} alt={product.title} />
-      </S.CartItemImage>
-
-      <S.CartItemInfo>
-        <p>{product.title}</p>
-        <p>R${product.newPrice}</p>
-
-        <S.CartItemQuantity>
-          <AiOutlineMinus
-            size={20}
-            onClick={handleDecreaseClick}
-            aria-label={`Decrease quantity of ${product.title}`}
-          />
-          <p>{product.quantity}</p>
-          <AiOutlinePlus
-            size={20}
-            onClick={handleIncreaseClick}
-            aria-label={`Increase quantity of ${product.title}`}
-          />
-        </S.CartItemQuantity>
-      </S.CartItemInfo>
-
-      <S.RemoveButton
-        onClick={handleRemoveClick}
-        aria-label={`Remove ${product.title}`}
-      >
-        <p>Remove</p>
-      </S.RemoveButton>
-    </S.CartItemContainer>
+    <S.CartContainer>
+      <S.Content>
+        <div>
+          <div className="cart-items">
+            <div className="cart-item" key={product.id}>
+              <div className="cart-product">
+                <img src={product.img} alt={product.title} />
+                <div>
+                  <h3 className="product-name">{product.title}</h3>
+                  <AiFillStar className="rating-star" />
+                  <AiFillStar className="rating-star" />
+                  <AiFillStar className="rating-star" />
+                  <AiFillStar className="rating-star" />
+                  <p>{product.reviews}</p>
+                  <button onClick={handleRemoveClick}>Remove</button>
+                </div>
+              </div>
+              <div className="cart-product-price">${product.newPrice}</div>
+              <div className="cart-product-quantity">
+                <button onClick={handleDecreaseClick}>-</button>
+                <div className="count">{product.quantity}</div>
+                <button onClick={handleIncreaseClick}>+</button>
+              </div>
+              {product.quantity && (
+                <div className="cart-product-total-price">
+                  ${product.newPrice * product.quantity}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </S.Content>
+    </S.CartContainer>
   )
 }
 
