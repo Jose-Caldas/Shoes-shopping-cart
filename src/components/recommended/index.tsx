@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as S from './styles'
 import Button from '../button'
 
@@ -7,6 +7,12 @@ type RecommendedProps = {
 }
 
 function Recommended({ handleClick }: RecommendedProps) {
+  const [showFilter, setShowFilter] = useState(false)
+
+  function handleFilterButton() {
+    setShowFilter(true)
+  }
+
   return (
     <>
       <div>
@@ -18,7 +24,20 @@ function Recommended({ handleClick }: RecommendedProps) {
           <Button onClickHandler={handleClick} value="Puma" title="Puma" />
           <Button onClickHandler={handleClick} value="Vans" title="Vans" />
           <Button onClickHandler={handleClick} value="Others" title="Others" />
+          <Button
+            onClickHandler={handleFilterButton}
+            value="Others"
+            title="Other Filters"
+          />
         </S.RecommendedFlex>
+        {showFilter && (
+          <S.ModalContainer>
+            <p>Category</p>
+            <p>Price</p>
+            <p>Colors</p>
+            <button onClick={() => setShowFilter(false)}>Close</button>
+          </S.ModalContainer>
+        )}
       </div>
     </>
   )

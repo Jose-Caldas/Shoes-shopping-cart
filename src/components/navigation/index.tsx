@@ -33,22 +33,22 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
           placeholder="Enter your search shoes."
         />
       </div>
-      <S.MobileMenu onClick={() => setShowFilter(true)}>Menu</S.MobileMenu>
-      <S.FilterContainer isVisible={showFilter}>
-        {showFilter && (
-          <>
-            <div className="content">
+      <S.MobileMenu onClick={() => setShowFilter(true)}>Filter</S.MobileMenu>
+      {showFilter && (
+        <S.FilterContainer>
+          <S.FilterContent>
+            <div className="filter-header">
               <p>Fiters</p>
               <AiOutlineClose onClick={() => setShowFilter(false)} />
             </div>
-            <div>
+            <div className="filter-content">
               <p>Category</p>
               <p>Price</p>
               <p>Colors</p>
             </div>
-          </>
-        )}
-      </S.FilterContainer>
+          </S.FilterContent>
+        </S.FilterContainer>
+      )}
       <S.Profile>
         <a href="/">
           <FiHeart className="nav-icons" />

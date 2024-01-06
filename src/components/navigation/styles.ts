@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export const Navigation = styled.section`
   display: flex;
@@ -45,6 +45,11 @@ export const SearchInput = styled.input`
 
 export const MobileMenu = styled.button`
   display: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  background-color: green;
+  color: #fff;
+  border-radius: 4px;
 
   @media screen and (max-width: 768px) {
     display: block;
@@ -59,38 +64,51 @@ export const Profile = styled.div`
   }
 `
 
-type FilterContainerProps = {
-  isVisible: boolean
-}
+export const FilterContainer = styled.div`
+  background-color: transparent;
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
 
-export const FilterContainer = styled.div<FilterContainerProps>`
-  padding: 10px;
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+`
 
-  ${({ isVisible }) => css`
-    overflow-y: scroll;
-    display: none;
-    width: 18rem;
-    height: 100%;
-    z-index: 999;
-    position: absolute;
-    top: 0;
-    right: 0;
+export const FilterContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100vh;
 
-    background-color: red;
-    visibility: ${isVisible ? 'visible' : 'hidden'};
-    transform: translate(${isVisible ? '0px' : '110px'});
-    transition: transform 0.3s;
+  background-color: #fff;
+  padding: 1rem;
 
-    .content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+  .filter-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
 
-    @media screen and (max-width: 768px) {
-      display: inline-block;
-    }
-  `};
+  .filter-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 `
 
 export const CartView = styled(Link)`

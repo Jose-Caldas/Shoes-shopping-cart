@@ -57,7 +57,7 @@ function CartItem({ product }: CartItemProps) {
         onClick={handleRemoveClick}
         aria-label={`Remove ${product.title}`}
       >
-        <AiOutlineClose size={25} />
+        <p>Remove</p>
       </S.RemoveButton>
     </S.CartItemContainer>
   )

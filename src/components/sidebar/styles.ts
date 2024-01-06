@@ -20,12 +20,10 @@ export const LogoContainer = styled.div`
   margin-bottom: 4rem;
 
   h1 {
-    margin-top: 1.3rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #222;
+    font-weight: normal;
+    margin-top: 1.5rem;
   }
-`
-
-export const SidebarTitle = styled.h1`
-  font-size: 22px;
-  font-weight: normal;
-  margin-bottom: 20px;
 `

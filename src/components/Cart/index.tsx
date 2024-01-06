@@ -3,16 +3,23 @@ import {
   selectProductsCount,
   selectProductsTotalPrice,
 } from '../../app/cartSelectors'
-import { useAppSelector } from '../../app/hooks'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import CartItem from '../cartItem'
 import * as S from './styles'
 import { AiOutlineShoppingCart, AiOutlineArrowLeft } from 'react-icons/ai'
+import Button from '../button'
+import { clearCart } from '../../features/cart/cartSlice'
 
 const Cart = () => {
   const { products } = useAppSelector((state) => state.cart)
   const productsTotalPrice = useSelector(selectProductsTotalPrice)
+  const dispatch = useAppDispatch()
 
   const productsCount = useAppSelector(selectProductsCount)
+
+  function handleClearCart() {
+    dispatch(clearCart())
+  }
 
   return (
     <S.CartContainer>
@@ -46,6 +53,7 @@ const Cart = () => {
               <div>
                 <span>Total Purchase:</span> R$ {productsTotalPrice}
               </div>
+              <Button title="Clear Cart" onClickHandler={handleClearCart} />
               <S.ReturnShop to="/">
                 <AiOutlineArrowLeft size={20} />
                 <p>Continue Shopping</p>

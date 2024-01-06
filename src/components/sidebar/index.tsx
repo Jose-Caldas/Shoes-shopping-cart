@@ -12,7 +12,7 @@ function Sidebar({ handleChange }: SidebarProps) {
     <>
       <S.Sidebar>
         <S.LogoContainer>
-          <h1 className="sidebar-title">🛒</h1>
+          <h1 className="sidebar-title">SH🛒PPING</h1>
         </S.LogoContainer>
         <Category handleChange={handleChange} />
         <Price handleChange={handleChange} />

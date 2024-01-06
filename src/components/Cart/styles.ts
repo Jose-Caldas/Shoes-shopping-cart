@@ -37,7 +37,7 @@ export const CartTitle = styled.p`
   margin-bottom: 2rem;
 `
 
-export const CartTotal = styled.p`
+export const CartTotal = styled.div`
   display: flex;
   justify-content: space-around;
   font-weight: 600;
