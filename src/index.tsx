@@ -6,6 +6,8 @@ import App from './App'
 import GlobalStyles from './GlobalStyles'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Cart from './components/Cart'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/ReactToastify.min.css'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
@@ -24,6 +26,7 @@ const router = createBrowserRouter([
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ToastContainer position="bottom-left" newestOnTop />
       <RouterProvider router={router} />
     </Provider>
     <GlobalStyles />

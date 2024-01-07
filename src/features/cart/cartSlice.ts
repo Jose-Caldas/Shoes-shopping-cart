@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { toast } from 'react-toastify'
 
 export interface CartSliceState {
   id: string
@@ -40,6 +41,7 @@ const cartSlice = createSlice({
       }
 
       state.products = [...state.products, { ...action.payload, quantity: 1 }]
+      toast.success(`${action.payload.title} added to cart`)
     },
     increaseProductQuantity: (state, action) => {
       state.products = state.products.map((product) =>
@@ -47,8 +49,17 @@ const cartSlice = createSlice({
           ? { ...product, quantity: product.quantity + 1 }
           : product
       )
+      const itemIndex = state.products.findIndex(
+        (product) => product.id === action.payload
+      )
+      toast.info(`Increase ${state.products[itemIndex].title} cart quantity`)
     },
     decreaseProductQuantity: (state, action) => {
+      const itemIndex = state.products.findIndex(
+        (product) => product.id === action.payload
+      )
+      toast.info(`Decrease ${state.products[itemIndex].title} cart quantity`)
+
       return {
         ...state,
         products: state.products
@@ -64,9 +75,11 @@ const cartSlice = createSlice({
       state.products = state.products.filter(
         (product) => product.id !== action.payload
       )
+      toast.warning('Product removed from cart')
     },
     clearCart: (state) => {
       state.products = []
+      toast.error('Your cart now is empty')
     },
   },
 })
