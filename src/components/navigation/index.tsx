@@ -29,7 +29,7 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
 
       <S.Profile>
         <S.CartView to="/cart">
-          <AiOutlineShoppingCart color="#fff" />
+          <AiOutlineShoppingCart color="#fff" size={30} />
           <p>({productsCount})</p>
         </S.CartView>
       </S.Profile>

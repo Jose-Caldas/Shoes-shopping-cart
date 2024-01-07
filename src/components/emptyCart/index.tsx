@@ -10,7 +10,7 @@ function EmptyCart() {
         <div className="start-shopping">
           <Link to="/">
             <AiOutlineArrowLeft size={20} />
-            <span>Start Shop</span>
+            <span>Start Shopping</span>
           </Link>
         </div>
       </div>

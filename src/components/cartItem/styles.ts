@@ -9,8 +9,7 @@ export const CartContainer = styled.section`
 export const Content = styled.div`
   width: 100%;
 
-  .cart-item,
-  .titles {
+  .cart-item {
     display: grid;
     align-items: center;
     grid-template-columns: 3fr 1fr 1fr 1fr;
@@ -20,15 +19,6 @@ export const Content = styled.div`
   .cart-item {
     border-top: 1px solid #eee;
     padding: 1rem 0;
-  }
-
-  .titles .product-title {
-    padding-left: 0.5rem;
-  }
-
-  .titles .total {
-    padding-right: 0.5rem;
-    justify-self: right;
   }
 
   .cart-item .cart-product {
@@ -58,16 +48,17 @@ export const Content = styled.div`
     margin-top: 0.7rem;
     cursor: pointer;
     background: none;
-    color: gray;
+    color: red;
+    opacity: 0.8;
 
     &:hover {
-      color: black;
+      opacity: 1;
     }
   }
 
   .cart-product-quantity {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     width: 130px;
     max-width: 100%;
@@ -80,6 +71,7 @@ export const Content = styled.div`
       background: none;
       padding: 0.7rem 1.5rem;
       cursor: pointer;
+      font-size: 24px;
     }
 
     .count {

@@ -25,7 +25,6 @@ export const CartContainer = styled.div`
     }
   }
 
-  .cart-item,
   .titles {
     display: grid;
     align-items: center;
@@ -33,72 +32,9 @@ export const CartContainer = styled.div`
     column-gap: 0.5rem;
   }
 
-  .cart-item {
-    border-top: 1px solid #eee;
-    padding: 1rem 0;
-  }
-
-  .titles .product-title {
-    padding-left: 0.5rem;
-  }
-
   .titles .total {
     padding-right: 0.5rem;
     justify-self: right;
-  }
-
-  .cart-item .cart-product {
-    display: flex;
-  }
-
-  .cart-item .cart-product img {
-    width: 10rem;
-    max-width: 100%;
-  }
-
-  .cart-item .cart-product h3 {
-    font-weight: 400;
-  }
-
-  .cart-item .cart-product button {
-    border: none;
-    outline: none;
-    margin-top: 0.7rem;
-    cursor: pointer;
-    background: none;
-    color: gray;
-
-    &:hover {
-      color: black;
-    }
-  }
-
-  .cart-product-quantity {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    width: 130px;
-    max-width: 100%;
-    border: 1px solid rgb(177, 177, 177);
-    border-radius: 5px;
-
-    button {
-      border: none;
-      outline: none;
-      background: none;
-      padding: 0.7rem 1.5rem;
-      cursor: pointer;
-    }
-
-    .count {
-      padding: 0.7rem 0;
-    }
-  }
-
-  .cart-product-total-price {
-    justify-self: right;
-    padding-right: 0.5rem;
-    font-weight: bold;
   }
 
   /* Cart summary */
@@ -268,6 +204,7 @@ export const CartView = styled(Link)`
 
   p {
     color: #fff;
+    font-size: 1.5rem;
   }
 `
 

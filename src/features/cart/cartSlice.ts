@@ -18,8 +18,10 @@ export interface ProductState {
   products: CartSliceState[]
 }
 
+const localStorageTemp = localStorage.getItem('cartItems')
+
 const initialState: ProductState = {
-  products: [],
+  products: localStorageTemp ? JSON.parse(localStorageTemp) : [],
 }
 
 const cartSlice = createSlice({
@@ -32,6 +34,12 @@ const cartSlice = createSlice({
       )
 
       if (productIsAlreadyInCart) {
+        toast.info(`Increase ${action.payload.title} cart quantity`)
+      } else {
+        toast.success(`${action.payload.title} added to cart`)
+      }
+
+      if (productIsAlreadyInCart) {
         state.products = state.products.map((product) =>
           product.id === action.payload.id
             ? { ...product, quantity: product.quantity + 1 }
@@ -41,7 +49,7 @@ const cartSlice = createSlice({
       }
 
       state.products = [...state.products, { ...action.payload, quantity: 1 }]
-      toast.success(`${action.payload.title} added to cart`)
+      localStorage.setItem('cartItems', JSON.stringify(state.products))
     },
     increaseProductQuantity: (state, action) => {
       state.products = state.products.map((product) =>

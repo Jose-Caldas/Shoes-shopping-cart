@@ -20,6 +20,7 @@ const Cart = () => {
 
   function handleClearCart() {
     dispatch(clearCart())
+    localStorage.removeItem('cartItems')
   }
 
   return (
@@ -28,7 +29,7 @@ const Cart = () => {
         <S.HeaderContent>
           <S.Logo to="/">SH🛒PPING</S.Logo>
           <S.CartView to="/cart">
-            <AiOutlineShoppingCart color="#fff" size={20} />
+            <AiOutlineShoppingCart color="#fff" size={30} />
             <p>({productsCount})</p>
           </S.CartView>
         </S.HeaderContent>
@@ -59,7 +60,7 @@ const Cart = () => {
               <div className="continue-shopping">
                 <Link to="/">
                   <AiOutlineArrowLeft size={20} />
-                  <span>Continue Shop</span>
+                  <span>Continue Shopping</span>
                 </Link>
               </div>
             </div>

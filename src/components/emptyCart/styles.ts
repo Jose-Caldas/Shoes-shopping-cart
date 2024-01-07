@@ -11,10 +11,18 @@ export const EmptyContainer = styled.div`
   .start-shopping a {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    padding: 0.7rem 0;
     color: rgb(84, 84, 84);
 
+    letter-spacing: 1.15px;
+
     text-decoration: none;
+
+    &:hover {
+      color: #222222;
+    }
   }
 `

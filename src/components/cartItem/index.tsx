@@ -1,12 +1,13 @@
 import { useAppDispatch } from '../../app/hooks'
 import { AiFillStar } from 'react-icons/ai'
-import * as S from './styles'
 import {
   decreaseProductQuantity,
   increaseProductQuantity,
   removeProductFromCart,
 } from '../../features/cart/cartSlice'
 import { IProduct } from '../../interface'
+
+import * as S from './styles'
 
 export interface CartPageProps {
   product: IProduct
@@ -49,7 +50,14 @@ function CartItem({ product }: CartPageProps) {
               </div>
               <div className="cart-product-price">${product.newPrice}</div>
               <div className="cart-product-quantity">
-                <button onClick={handleDecreaseClick}>-</button>
+                {product.quantity && (
+                  <button
+                    onClick={handleDecreaseClick}
+                    disabled={product.quantity <= 1}
+                  >
+                    -
+                  </button>
+                )}
                 <div className="count">{product.quantity}</div>
                 <button onClick={handleIncreaseClick}>+</button>
               </div>

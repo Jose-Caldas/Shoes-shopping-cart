@@ -67,6 +67,10 @@ export const CartView = styled(Link)`
   cursor: pointer;
   text-decoration: none;
 
+  p {
+    font-size: 1.5rem;
+  }
+
   @media screen and (max-width: 330px) {
     position: absolute;
     top: 28px;
