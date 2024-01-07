@@ -7,4 +7,11 @@ export default createGlobalStyle`
        box-sizing:border-box;
        font-family: 'Open Sans', sans-serif; 
    }
+
+   .app-content{
+   
+    display: flex;
+    margin-top: 79px;
+   }
+
 `

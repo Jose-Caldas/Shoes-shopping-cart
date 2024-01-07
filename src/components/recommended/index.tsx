@@ -15,7 +15,7 @@ function Recommended({ handleClick }: RecommendedProps) {
 
   return (
     <>
-      <div>
+      <S.Container>
         <S.RecommendedTitle>Recommended</S.RecommendedTitle>
         <S.RecommendedFlex>
           <Button onClickHandler={handleClick} value="" title="All Products" />
@@ -38,7 +38,7 @@ function Recommended({ handleClick }: RecommendedProps) {
             <button onClick={() => setShowFilter(false)}>Close</button>
           </S.ModalContainer>
         )}
-      </div>
+      </S.Container>
     </>
   )
 }

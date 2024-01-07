@@ -59,12 +59,16 @@ function App() {
   const result = filteredData(products, selectedCategory, query)
 
   return (
-    <>
-      <Sidebar handleChange={handleChange} />
+    <div className="app-container">
       <Navigation query={query} handleInputChange={handleInputChange} />
-      <Recommended handleClick={handleClick} />
-      <Products result={result} />
-    </>
+      <div className="app-content">
+        <Sidebar handleChange={handleChange} />
+        <div className="products-container">
+          <Recommended handleClick={handleClick} />
+          <Products result={result} />
+        </div>
+      </div>
+    </div>
   )
 }
 

@@ -39,10 +39,13 @@ export const Content = styled.div`
     color: #d5ab55;
   }
 
+  .image-container {
+    width: 210px;
+  }
+
   .cart-item .cart-product img {
-    width: 10rem;
+    width: 192px;
     max-width: 100%;
-    margin-right: 1rem;
   }
 
   .cart-item .cart-product h3 {

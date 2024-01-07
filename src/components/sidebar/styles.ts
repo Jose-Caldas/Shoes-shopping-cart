@@ -1,17 +1,18 @@
 import styled from 'styled-components'
 
 export const Sidebar = styled.section`
-  width: 15%;
-  max-width: 18rem;
   position: fixed;
+  width: 20%;
+  max-width: 18rem;
   height: 100%;
   border-right: 2px solid #e5e5e5;
   display: flex;
   flex-direction: column;
+  padding-top: 80px;
 
   gap: 20px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1044px) {
     display: none;
   }
 `

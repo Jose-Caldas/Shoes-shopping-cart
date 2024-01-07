@@ -54,7 +54,6 @@ export const CartContainer = styled.div`
   .cart-item .cart-product img {
     width: 10rem;
     max-width: 100%;
-    margin-right: 1rem;
   }
 
   .cart-item .cart-product h3 {
@@ -245,8 +244,9 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 4rem;
+  padding: 20px 30px;
   background-color: #222222;
+  height: 79px;
 `
 
 export const Logo = styled(Link)`

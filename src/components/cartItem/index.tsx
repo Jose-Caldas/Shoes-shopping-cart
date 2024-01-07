@@ -34,7 +34,9 @@ function CartItem({ product }: CartPageProps) {
           <div className="cart-items">
             <div className="cart-item" key={product.id}>
               <div className="cart-product">
-                <img src={product.img} alt={product.title} />
+                <div className="image-container">
+                  <img src={product.img} alt={product.title} />
+                </div>
                 <div>
                   <h3 className="product-name">{product.title}</h3>
                   <AiFillStar className="rating-star" />

@@ -3,30 +3,37 @@ import styled from 'styled-components'
 
 export const Navigation = styled.section`
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 20px 30px;
   background-color: #222222;
+  position: fixed;
+  top: 0;
+  width: 100%;
 
-  .nav-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  @media screen and (max-width: 768px) {
+    padding: 20px 16px;
   }
 
-  .nav-icons {
-    width: 1.5rem;
-    height: 1.5rem;
-    margin-left: 2rem;
-    color: #494949;
+  .logo-mobile {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+      display: block;
+    }
+
+    @media screen and (max-width: 340px) {
+      display: none;
+    }
   }
 `
 
 export const Logo = styled.div`
-  display: none;
-
+  color: #fff;
+  font-size: 24px;
   @media screen and (max-width: 768px) {
-    display: block;
+    display: none;
   }
 `
 
@@ -35,87 +42,20 @@ export const SearchInput = styled.input`
   border: none;
   background: #f7f6f6;
   outline: none;
-  margin-right: 20px;
   border-radius: 5px;
-  position: relative;
   width: 14rem;
-`
-
-export const MobileMenu = styled.button`
-  display: none;
-  border: none;
-  padding: 0.5rem 1rem;
-  background-color: green;
-  color: #fff;
-  border-radius: 4px;
 
   @media screen and (max-width: 768px) {
-    display: block;
+    padding: 12px;
   }
 `
 
 export const Profile = styled.div`
   display: flex;
-
   color: #fff;
 
   p {
     color: #fff;
-  }
-
-  .nav-icons {
-    color: #fff;
-  }
-
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`
-
-export const FilterContainer = styled.div`
-  background-color: transparent;
-  display: none;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 1000;
-
-  @media screen and (max-width: 768px) {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
-`
-
-export const FilterContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  width: 100%;
-  height: 100vh;
-
-  background-color: #fff;
-  padding: 1rem;
-
-  .filter-header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-  }
-
-  .filter-content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
   }
 `
 
@@ -126,4 +66,10 @@ export const CartView = styled(Link)`
   gap: 5px;
   cursor: pointer;
   text-decoration: none;
+
+  @media screen and (max-width: 330px) {
+    position: absolute;
+    top: 28px;
+    right: 16px;
+  }
 `

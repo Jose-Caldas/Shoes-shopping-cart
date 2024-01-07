@@ -1,14 +1,17 @@
 import styled from 'styled-components'
 
+export const Container = styled.section`
+  padding: 20px;
+`
+
 export const RecommendedTitle = styled.h2`
   margin-left: 20rem;
   margin-bottom: 20px;
   margin-top: 20px;
   font-size: 20px;
-  padding-left: 20px;
 
   @media screen and (max-width: 768px) {
-    margin-left: 2rem;
+    margin-left: 0;
   }
 `
 
@@ -16,8 +19,11 @@ export const RecommendedFlex = styled.section`
   display: flex;
   flex-wrap: wrap;
   margin-left: 20rem;
-  padding-left: 20px;
   gap: 10px;
+
+  @media screen and (max-width: 1044px) {
+    margin-left: 0;
+  }
 
   button {
     &:hover,
@@ -32,28 +38,26 @@ export const RecommendedFlex = styled.section`
 
       display: none;
 
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 1044px) {
         display: flex;
       }
     }
-  }
-
-  @media screen and (max-width: 768px) {
-    margin-left: 2rem;
   }
 `
 export const ModalContainer = styled.div`
   background-color: #fff;
   display: none;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1044px) {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    width: 300px;
+    width: 100%;
+    max-width: 400px;
+
     border: 1px solid #eee;
-    margin-left: 3rem;
+
     margin-top: 1rem;
     opacity: 0;
     transform: translateY(-20px);
@@ -65,5 +69,9 @@ export const ModalContainer = styled.div`
         transform: initial;
       }
     }
+  }
+
+  @media screen and (max-width: 540px) {
+    width: 100%;
   }
 `

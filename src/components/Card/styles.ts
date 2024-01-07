@@ -18,7 +18,6 @@ export const CardContainer = styled.section`
 
   .card-img {
     width: 12rem;
-    margin-bottom: 1rem;
   }
 
   @media screen and (max-width: 768px) {

@@ -11,9 +11,6 @@ function Sidebar({ handleChange }: SidebarProps) {
   return (
     <>
       <S.Sidebar>
-        <S.LogoContainer>
-          <h1 className="sidebar-title">SH🛒PPING</h1>
-        </S.LogoContainer>
         <S.FilterContainer>
           <Category handleChange={handleChange} />
           <Price handleChange={handleChange} />
