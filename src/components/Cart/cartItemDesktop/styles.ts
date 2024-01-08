@@ -85,3 +85,10 @@ export const Content = styled.div`
     font-weight: bold;
   }
 `
+
+export const RemoveItem = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #e63946;
+`

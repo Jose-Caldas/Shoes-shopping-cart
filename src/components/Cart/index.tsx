@@ -40,7 +40,30 @@ const Cart = () => {
       {products.length > 0 ? (
         <>
           <S.ProductMobile>
-            <CartItemMobile />
+            <S.ButtonContainer>
+              <button className="clear-cart" onClick={handleClearCart}>
+                Clear Cart
+              </button>
+            </S.ButtonContainer>
+            {products.map((product) => (
+              <CartItemMobile key={product.id} product={product} />
+            ))}
+            <S.MobileSummary>
+              <div className="cart-checkout">
+                <div className="subtotal">
+                  <span>Purchase Total</span>
+                  <span className="amount">${productsTotalPrice}</span>
+                </div>
+                <p>Taxes and shipping calculated at checkout</p>
+                <button>Check Out</button>
+                <div className="continue-shopping">
+                  <Link to="/">
+                    <AiOutlineArrowLeft size={20} />
+                    <span>Continue Shopping</span>
+                  </Link>
+                </div>
+              </div>
+            </S.MobileSummary>
           </S.ProductMobile>
           <S.ProductContainer>
             <div>

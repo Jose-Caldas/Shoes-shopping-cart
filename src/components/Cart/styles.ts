@@ -140,10 +140,50 @@ export const ProductContainer = styled.div`
 
 export const ProductMobile = styled.section`
   display: none;
+  margin-top: 1rem;
 
   @media (max-width: 864px) {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
+`
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  padding: 0 1rem;
+
+  .clear-cart {
+    width: 130px;
+    height: 40px;
+    background-color: transparent;
+    color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    font-weight: 600;
+    transition: all 0.5s ease;
+    text-decoration: none;
+    letter-spacing: 1.15px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #252422;
+      color: white;
+    }
+  }
+`
+
+export const MobileSummary = styled.div`
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #eee;
+  margin-top: 0.5rem;
+  margin-bottom: 4rem;
+  padding: 1rem;
 `
 
 export const CartTotal = styled.div`

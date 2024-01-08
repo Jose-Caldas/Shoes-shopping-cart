@@ -1,5 +1,5 @@
 import { useAppDispatch } from '../../../app/hooks'
-import { AiFillStar } from 'react-icons/ai'
+import { AiFillStar, AiOutlineDelete } from 'react-icons/ai'
 import {
   decreaseProductQuantity,
   increaseProductQuantity,
@@ -45,7 +45,10 @@ function CartItemDesktop({ product }: CartPageProps) {
                   <AiFillStar className="rating-star" />
                   <AiFillStar className="rating-star" />
                   <p>{product.reviews}</p>
-                  <button onClick={handleRemoveClick}>Remove</button>
+                  <S.RemoveItem onClick={handleRemoveClick}>
+                    <AiOutlineDelete size={20} color="#e63946" />
+                    Remove
+                  </S.RemoveItem>
                 </div>
               </div>
               <div className="cart-product-price">${product.newPrice}</div>
