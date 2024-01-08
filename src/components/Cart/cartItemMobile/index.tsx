@@ -1,7 +1,7 @@
 import React from 'react'
 
-function ItemMobile() {
+function CartItemMobile() {
   return <div>ItemMobile</div>
 }
 
-export default ItemMobile
+export default CartItemMobile

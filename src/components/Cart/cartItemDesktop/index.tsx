@@ -1,11 +1,11 @@
-import { useAppDispatch } from '../../app/hooks'
+import { useAppDispatch } from '../../../app/hooks'
 import { AiFillStar } from 'react-icons/ai'
 import {
   decreaseProductQuantity,
   increaseProductQuantity,
   removeProductFromCart,
-} from '../../features/cart/cartSlice'
-import { IProduct } from '../../interface'
+} from '../../../features/cart/cartSlice'
+import { IProduct } from '../../../interface'
 
 import * as S from './styles'
 
@@ -13,7 +13,7 @@ export interface CartPageProps {
   product: IProduct
 }
 
-function CartItem({ product }: CartPageProps) {
+function CartItemDesktop({ product }: CartPageProps) {
   const dispatch = useAppDispatch()
 
   const handleRemoveClick = () => {
@@ -74,4 +74,4 @@ function CartItem({ product }: CartPageProps) {
   )
 }
 
-export default CartItem
+export default CartItemDesktop

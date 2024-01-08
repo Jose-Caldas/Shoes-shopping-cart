@@ -9,8 +9,9 @@ import { AiOutlineShoppingCart, AiOutlineArrowLeft } from 'react-icons/ai'
 import { clearCart } from '../../features/cart/cartSlice'
 import EmptyCart from '../emptyCart'
 import { Link } from 'react-router-dom'
-import CartItem from '../cartItem'
-import ItemMobile from '../itemMobile'
+
+import CartItemMobile from './cartItemMobile'
+import CartItemDesktop from './cartItemDesktop'
 
 const Cart = () => {
   const { products } = useAppSelector((state) => state.cart)
@@ -39,7 +40,7 @@ const Cart = () => {
       {products.length > 0 ? (
         <>
           <S.ProductMobile>
-            <ItemMobile />
+            <CartItemMobile />
           </S.ProductMobile>
           <S.ProductContainer>
             <div>
@@ -50,7 +51,7 @@ const Cart = () => {
                 <h3 className="total">Subtotal</h3>
               </div>
               {products.map((product) => (
-                <CartItem key={product.id} product={product} />
+                <CartItemDesktop key={product.id} product={product} />
               ))}
               <div className="cart-summary">
                 <button className="clear-cart" onClick={handleClearCart}>
