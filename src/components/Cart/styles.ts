@@ -12,9 +12,6 @@ export const CartContainer = styled.div`
 
   /* ========================================================= */
 
-  .list-container {
-    padding: 2rem 4rem;
-  }
   .titles {
     margin: 2rem 0 1rem 0;
 
@@ -131,23 +128,21 @@ export const CartContainer = styled.div`
   /* ======================================================== */
 `
 
-export const CartContent = styled.div`
+export const ProductContainer = styled.div`
+  max-width: 1600px;
+  margin: 0 auto;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  @media (max-width: 768px) {
-    min-width: 100%;
+  @media (max-width: 864px) {
+    display: none;
   }
 `
 
-export const ProductContainer = styled.div`
-  width: 100%;
-  padding: 0 6rem;
+export const ProductMobile = styled.section`
+  display: none;
 
-  @media (max-width: 768px) {
-    padding: 0;
+  @media (max-width: 864px) {
+    display: block;
   }
 `
 
