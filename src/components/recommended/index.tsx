@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
 import * as S from './styles'
 import Button from '../button'
+import { useAppDispatch } from '../../app/hooks'
+import { openFilter } from '../../features/filter/filterSlice'
 
 type RecommendedProps = {
   handleClick: (event: any) => void
 }
 
 function Recommended({ handleClick }: RecommendedProps) {
-  const [showFilter, setShowFilter] = useState(false)
+  const dispatch = useAppDispatch()
 
-  function handleFilterButton() {
-    setShowFilter(true)
+  function handleOpenFilter() {
+    dispatch(openFilter())
   }
 
   return (
@@ -25,19 +26,11 @@ function Recommended({ handleClick }: RecommendedProps) {
           <Button onClickHandler={handleClick} value="Vans" title="Vans" />
           <Button onClickHandler={handleClick} value="Others" title="Others" />
           <Button
-            onClickHandler={handleFilterButton}
+            onClickHandler={handleOpenFilter}
             value="Others"
             title="Other Filters"
           />
         </S.RecommendedFlex>
-        {showFilter && (
-          <S.ModalContainer>
-            <p>Category</p>
-            <p>Price</p>
-            <p>Colors</p>
-            <button onClick={() => setShowFilter(false)}>Close</button>
-          </S.ModalContainer>
-        )}
       </S.Container>
     </>
   )

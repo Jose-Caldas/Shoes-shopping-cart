@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
+  padding-right: 20px;
   .sidebar-title {
     font-size: 22px;
     font-weight: normal;
@@ -84,4 +85,24 @@ export const Title = styled.h2`
 
 export const Items = styled.div`
   margin-top: 20px;
+`
+
+export const CategoryHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    display: none;
+
+    @media screen and (max-width: 1044px) {
+      display: block;
+      background-color: #4c956c;
+      border: none;
+      margin-bottom: 20px;
+      color: #fff;
+      padding: 10px;
+      border-radius: 4px;
+    }
+  }
 `

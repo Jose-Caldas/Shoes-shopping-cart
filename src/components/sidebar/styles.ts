@@ -1,20 +1,42 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Sidebar = styled.section`
-  position: fixed;
-  width: 20%;
-  max-width: 18rem;
-  height: 100%;
-  border-right: 2px solid #e5e5e5;
-  display: flex;
-  flex-direction: column;
-  padding-top: 80px;
+type SidebarProps = {
+  visible: boolean
+}
 
-  gap: 20px;
+export const Sidebar = styled.section<SidebarProps>`
+  ${({ visible }) => css`
+    position: fixed;
+    width: 20%;
+    max-width: 18rem;
+    height: 100%;
+    border-right: 2px solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    gap: 20px;
 
-  @media screen and (max-width: 1044px) {
-    display: none;
-  }
+    @media screen and (max-width: 1044px) {
+      background-color: #fff;
+      z-index: 999;
+      width: 18rem;
+      display: ${visible ? 'block' : 'none'};
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: animationTop 0.3s forwards ease-in-out;
+      padding-top: 2rem;
+      margin-top: -80px;
+      width: 100%;
+      max-width: 100%;
+
+      @keyframes animationTop {
+        to {
+          opacity: 1;
+          transform: initial;
+        }
+      }
+    }
+  `}
 `
 
 export const FilterContainer = styled.div`

@@ -1,15 +1,26 @@
 import React from 'react'
 import * as S from './styles'
 import Input from '../../input'
+import { useAppDispatch } from '../../../app/hooks'
+import { closeFilter } from '../../../features/filter/filterSlice'
 
 type CategoryProps = {
   handleChange: React.ChangeEventHandler<HTMLInputElement>
 }
 
 function Category({ handleChange }: CategoryProps) {
+  const dispatch = useAppDispatch()
+
+  function handleCloseFilter() {
+    dispatch(closeFilter())
+  }
+
   return (
     <S.Container>
-      <S.Title className="sidebar-title">Category</S.Title>
+      <S.CategoryHeader>
+        <S.Title className="sidebar-title">Category</S.Title>
+        <button onClick={handleCloseFilter}>Apply Filter</button>
+      </S.CategoryHeader>
 
       <>
         <label className="sidebar-label-container">
