@@ -5,7 +5,7 @@ export const CartItemContainer = styled.div`
 
   flex-direction: column;
 
-  padding: 1rem;
+  margin-top: 1rem;
 
   opacity: 0;
   transform: translateX(-20px);

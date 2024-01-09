@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const CartContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
   p {
     color: #222222;
   }
@@ -129,9 +133,9 @@ export const CartContainer = styled.div`
 `
 
 export const ProductContainer = styled.div`
-  max-width: 1600px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
 
   opacity: 0;
   transform: translateX(-20px);
