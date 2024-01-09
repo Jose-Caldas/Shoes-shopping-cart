@@ -21,15 +21,17 @@ export const Sidebar = styled.section<SidebarProps>`
       z-index: 999;
       width: 18rem;
       display: ${visible ? 'block' : 'none'};
-      opacity: 0;
-      transform: translateX(-20px);
-      animation: animationTop 0.3s forwards ease-in-out;
+
       padding-top: 2rem;
       margin-top: -80px;
       width: 100%;
       max-width: 100%;
 
-      @keyframes animationTop {
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: animationLeft 0.3s forwards ease-in-out;
+
+      @keyframes animationLeft {
         to {
           opacity: 1;
           transform: initial;

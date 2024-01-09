@@ -133,6 +133,17 @@ export const ProductContainer = styled.div`
   margin: 0 auto;
   padding: 20px;
 
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: animationLeft 0.3s forwards ease-in-out;
+
+  @keyframes animationLeft {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
+
   @media (max-width: 864px) {
     display: none;
   }
@@ -184,6 +195,17 @@ export const MobileSummary = styled.div`
   margin-top: 0.5rem;
   margin-bottom: 4rem;
   padding: 1rem;
+
+  opacity: 0;
+  transform: translateX(20px);
+  animation: animationLeft 0.3s forwards ease-in-out;
+
+  @keyframes animationLeft {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
 `
 
 export const CartTotal = styled.div`
