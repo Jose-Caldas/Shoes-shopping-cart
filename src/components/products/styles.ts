@@ -21,7 +21,7 @@ export const Products = styled.section`
 
   @media screen and (max-width: 1044px) {
     margin-left: 0;
-    justify-content: start;
+    justify-content: center;
     width: 100%;
   }
 `

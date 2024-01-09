@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const CartItemContainer = styled.div`
   display: flex;
+  padding: 0 20px;
 
   flex-direction: column;
 

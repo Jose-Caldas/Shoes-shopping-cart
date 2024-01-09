@@ -4,7 +4,6 @@ import styled from 'styled-components'
 export const CartContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px;
 
   p {
     color: #222222;
@@ -136,6 +135,7 @@ export const ProductContainer = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 20px;
 
   opacity: 0;
   transform: translateX(-20px);
@@ -199,6 +199,7 @@ export const MobileSummary = styled.div`
   margin-top: 0.5rem;
   margin-bottom: 4rem;
   padding: 1rem;
+  margin: 16px 20px;
 
   opacity: 0;
   transform: translateX(20px);
