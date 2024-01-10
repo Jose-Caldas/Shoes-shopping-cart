@@ -45,6 +45,7 @@ const cartSlice = createSlice({
             ? { ...product, quantity: product.quantity + 1 }
             : product
         )
+        localStorage.setItem('cartItems', JSON.stringify(state.products))
         return
       }
 
@@ -61,29 +62,26 @@ const cartSlice = createSlice({
         (product) => product.id === action.payload
       )
       toast.info(`Increase ${state.products[itemIndex].title} cart quantity`)
+      localStorage.setItem('cartItems', JSON.stringify(state.products))
     },
     decreaseProductQuantity: (state, action) => {
+      state.products = state.products.map((product) =>
+        product.id === action.payload
+          ? { ...product, quantity: product.quantity - 1 }
+          : product
+      )
       const itemIndex = state.products.findIndex(
         (product) => product.id === action.payload
       )
       toast.info(`Decrease ${state.products[itemIndex].title} cart quantity`)
-
-      return {
-        ...state,
-        products: state.products
-          .map((product) =>
-            product.id === action.payload
-              ? { ...product, quantity: product.quantity - 1 }
-              : product
-          )
-          .filter((product) => product.quantity > 0),
-      }
+      localStorage.setItem('cartItems', JSON.stringify(state.products))
     },
     removeProductFromCart: (state, action) => {
       state.products = state.products.filter(
         (product) => product.id !== action.payload
       )
       toast.warning('Product removed from cart')
+      localStorage.setItem('cartItems', JSON.stringify(state.products))
     },
     clearCart: (state) => {
       state.products = []
