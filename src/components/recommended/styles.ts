@@ -27,7 +27,7 @@ export const RecommendedFlex = styled.section`
 
   button {
     &:hover,
-    &:checked {
+    &:focus {
       background-color: #222;
       color: #fff;
     }
@@ -42,36 +42,5 @@ export const RecommendedFlex = styled.section`
         display: flex;
       }
     }
-  }
-`
-export const ModalContainer = styled.div`
-  background-color: #fff;
-  display: none;
-
-  @media screen and (max-width: 1044px) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    width: 100%;
-    max-width: 400px;
-
-    border: 1px solid #eee;
-
-    margin-top: 1rem;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: animationTop 0.3s forwards ease-in-out;
-
-    @keyframes animationTop {
-      to {
-        opacity: 1;
-        transform: initial;
-      }
-    }
-  }
-
-  @media screen and (max-width: 540px) {
-    width: 100%;
   }
 `

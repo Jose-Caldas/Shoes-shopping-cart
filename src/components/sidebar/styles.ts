@@ -19,11 +19,9 @@ export const Sidebar = styled.section<SidebarProps>`
     @media screen and (max-width: 1044px) {
       background-color: #fff;
       z-index: 999;
-      width: 18rem;
       display: ${visible ? 'block' : 'none'};
 
       padding-top: 2rem;
-      margin-top: -80px;
       width: 100%;
       max-width: 100%;
 
