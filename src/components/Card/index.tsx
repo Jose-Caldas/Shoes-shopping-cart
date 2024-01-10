@@ -1,10 +1,8 @@
-import React from 'react'
-import { BsCartPlus } from 'react-icons/bs'
 import * as S from './styles'
 import { useAppDispatch } from '../../app/hooks'
 import { addProduct } from '../../features/cart/cartSlice'
-import { AiFillStar } from 'react-icons/ai'
 import { IProduct } from '../../interface'
+import { FiHeart } from 'react-icons/fi'
 
 export interface CardProps {
   product: IProduct
@@ -18,29 +16,27 @@ function Card({ product }: CardProps) {
   }
   return (
     <S.CardContainer>
-      <img className="card-img" src={product.img} alt={product.title} />
       <S.CardDetails>
+        <S.CardHeader>
+          <p>30% Off</p>
+          <FiHeart onClick={() => console.log('clicou')} />
+        </S.CardHeader>
+        <div>
+          <img className="card-img" src={product.img} alt={product.title} />
+        </div>
+        <S.AddCart to={`/cart`} onClick={handleProductClick}>
+          <p>Add to Cart</p>
+        </S.AddCart>
+      </S.CardDetails>
+      <S.CardFooter>
         <S.CardTitle>{product.title}</S.CardTitle>
-        <S.CardReviews>
-          <AiFillStar className="rating-star" />
-          <AiFillStar className="rating-star" />
-          <AiFillStar className="rating-star" />
-          <AiFillStar className="rating-star" />
-
-          <span className="total-reviews">{product.reviews}</span>
-        </S.CardReviews>
-
         <S.CardPrice>
           <S.Price>
             <del>${product.prevPrice},00</del>
-            <span>{product.newPrice}</span>
+            <span>${product.newPrice},00</span>
           </S.Price>
-          <S.AddCart to="/cart" onClick={handleProductClick}>
-            <BsCartPlus />
-            Add To Cart
-          </S.AddCart>
         </S.CardPrice>
-      </S.CardDetails>
+      </S.CardFooter>
     </S.CardContainer>
   )
 }

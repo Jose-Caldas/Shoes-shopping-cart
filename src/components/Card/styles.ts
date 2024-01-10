@@ -2,44 +2,61 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const CardContainer = styled.section`
-  margin: 20px;
-  border: 2px solid #ededed;
-  padding: 20px;
+  position: relative;
+  /* margin: 20px; */
+  padding: 16px;
   width: 270px;
   height: 400px;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
+
   transition: all 0.3s ease;
-  background-color: transparent;
   border-radius: 4px;
 
   .card-img {
-    width: 12rem;
-  }
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-
-    height: 200px;
-    flex-direction: row;
-    gap: 2rem;
+    width: 162px;
   }
 
   @media screen and (max-width: 510px) {
     width: 100%;
-    height: 400px;
-    flex-direction: column;
-    gap: 0;
   }
 `
 
-export const CardDetails = styled.div``
+export const CardHeader = styled.header`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: absolute;
+  padding: 0 32px;
+  top: 32px;
+
+  svg {
+    z-index: 9999;
+    cursor: pointer;
+  }
+`
+
+export const CardDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #eee;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+`
+
+export const CardFooter = styled.footer`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+`
 
 export const CardTitle = styled.h3`
-  margin-bottom: 1rem;
+  font-size: 14px;
+  font-weight: 300;
 `
 export const CardReviews = styled.span`
   margin-bottom: 1rem;
@@ -64,41 +81,42 @@ export const CardPrice = styled.section`
 
 export const Price = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
   del {
-    font-size: 15px;
+    font-size: 12px;
   }
 
   span {
-    margin-left: 10px;
     font-weight: 600;
+    font-size: 13px;
+    color: red;
   }
 `
 
 export const AddCart = styled(Link)`
-  width: 100%;
-  background-color: transparent;
-  color: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: center;
-  border-radius: 10px;
-  border: 1px solid #eee;
-  margin-top: 1rem;
-  padding: 10px;
-  font-weight: 600;
-  transition: all 0.5s ease;
+
   text-decoration: none;
 
-  &:hover {
-    cursor: pointer;
-    background-color: #252422;
-    color: white;
+  p {
+    padding: 0.5rem;
+    color: #fff;
+    background-color: #222222;
+    margin-bottom: 1rem;
+    border-radius: 4px;
   }
 
-  svg {
-    margin-right: 0.5rem;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
   }
 `

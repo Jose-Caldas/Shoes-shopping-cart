@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Cart from './components/Cart'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/ReactToastify.min.css'
+import Product from './components/product'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: '/cart',
     element: <Cart />,
+  },
+  {
+    path: '/product/:id',
+    element: <Product />,
   },
 ])
 
