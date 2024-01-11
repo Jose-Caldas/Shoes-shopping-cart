@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+export const ProductContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+`
+
 export const Header = styled.header`
   display: flex;
   align-items: center;
@@ -25,11 +30,199 @@ export const HeaderContent = styled.div`
 
 export const CartView = styled(Link)`
   display: flex;
+  align-items: center;
   text-decoration: none;
+  gap: 5px;
 
   p {
     color: #fff;
     font-size: 1.5rem;
+  }
+`
+
+export const ProductCard = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 8rem auto;
+  padding: 0 16px;
+  gap: 3rem;
+
+  width: 100%;
+
+  max-width: 1200px;
+
+  h2 {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: animationLeft 0.3s forwards ease-in-out;
+
+  @keyframes animationLeft {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
+`
+
+export const Title = styled.h2``
+
+export const ImageBox = styled.div`
+  width: 200px;
+
+  img {
+    width: 100%;
+  }
+`
+
+export const Reviews = styled.div`
+  margin: 2rem 0;
+
+  .rating-star {
+    color: #d5ab55;
+  }
+`
+
+export const SizesContainer = styled.div`
+  h1 {
+    font-size: 1rem;
+    color: #9c9492;
+    font-weight: 300;
+    letter-spacing: 1.15px;
+    margin-bottom: 4px;
+  }
+  border: 2px solid #eee;
+  padding: 1rem;
+  border-radius: 4px;
+`
+export const SizesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+`
+
+export const PriceContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+`
+
+export const CardPrice = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+`
+
+export const Price = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  del {
+    font-size: 12px;
+  }
+
+  span {
+    font-weight: 600;
+    font-size: 13px;
+    color: red;
+  }
+`
+
+export const SummaryContainer = styled.div`
+  border: 2px solid #eee;
+  padding: 1rem;
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+    letter-spacing: 1.15px;
+  }
+
+  h4 {
+    color: #000000;
+    font-size: 18px;
+    margin-bottom: 1rem;
+
+    span {
+      font-size: 14px;
+      color: #9c9492;
+      font-weight: 300;
+      letter-spacing: 1.15px;
+      margin-left: 8px;
+    }
+  }
+`
+
+export const IconBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  color: #9c9492;
+  p {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 300;
+  }
+`
+
+export const LinksContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+export const AddToCartLink = styled(Link)`
+  padding: 10px 20px;
+  background: transparent;
+  border: none;
+  border: 0.6px solid #eee;
+  border-radius: 5px;
+  color: #323232;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1.15px;
+  margin: 1rem 0;
+
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    background-color: #222222;
+    color: #fff;
+  }
+`
+export const BuyNowLink = styled(Link)`
+  padding: 10px 20px;
+  background-color: #4c956c;
+  opacity: 1;
+  border: none;
+  border: 0.6px solid #eee;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1.15px;
+
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    opacity: 0.8;
+    color: #fff;
   }
 `
 
@@ -56,5 +249,93 @@ export const AddCart = styled(Link)`
 
   svg {
     margin-right: 0.5rem;
+  }
+`
+
+export const ReturnShopping = styled(Link)`
+  display: flex;
+  align-items: center;
+
+  text-decoration: none;
+  color: gray;
+  letter-spacing: 1.15px;
+`
+
+export const Modal = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 1rem;
+  position: fixed;
+`
+
+export const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 40px 70px;
+  border-radius: 4px;
+  gap: 1rem;
+
+  @media screen and (max-width: 420px) {
+    padding: 30px;
+  }
+
+  p {
+    font-size: 20px;
+    text-transform: uppercase;
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .continue {
+    border: 2px solid #eee;
+    padding: 1rem 0.5rem;
+    color: #222222;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      background-color: #222222;
+      color: #fff;
+    }
+  }
+
+  .go-to {
+    border: 2px solid #eee;
+    padding: 1rem 0.5rem;
+    background-color: #222222;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  svg {
+    margin-bottom: 1rem;
   }
 `

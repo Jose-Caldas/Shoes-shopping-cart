@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { CartContainer } from '../Cart/styles'
 
 export const CardContainer = styled.section`
   position: relative;
-  /* margin: 20px; */
   padding: 16px;
   width: 270px;
   height: 400px;
@@ -105,6 +105,7 @@ export const AddCart = styled(Link)`
   display: flex;
   align-items: end;
   justify-content: center;
+  transition: all 0.3s ease-in-out;
 
   text-decoration: none;
 
@@ -117,6 +118,6 @@ export const AddCart = styled(Link)`
   }
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.1);
   }
 `

@@ -262,6 +262,8 @@ export const HeaderContent = styled.div`
 
 export const CartView = styled(Link)`
   display: flex;
+  align-items: center;
+  gap: 5px;
   text-decoration: none;
 
   p {

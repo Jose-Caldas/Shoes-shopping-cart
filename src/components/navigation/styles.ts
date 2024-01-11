@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 export const Navigation = styled.section`
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 20px 30px;
@@ -23,16 +22,13 @@ export const Navigation = styled.section`
     @media screen and (max-width: 768px) {
       display: block;
     }
-
-    @media screen and (max-width: 340px) {
-      display: none;
-    }
   }
 `
 
 export const Logo = styled.div`
   color: #fff;
   font-size: 24px;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -48,6 +44,11 @@ export const SearchInput = styled.input`
 
   @media screen and (max-width: 768px) {
     padding: 12px;
+  }
+
+  @media screen and (max-width: 320px) {
+    width: 150px;
+    font-size: 10px;
   }
 `
 
@@ -70,11 +71,5 @@ export const CartView = styled(Link)`
 
   p {
     font-size: 1.5rem;
-  }
-
-  @media screen and (max-width: 330px) {
-    position: absolute;
-    top: 28px;
-    right: 16px;
   }
 `
