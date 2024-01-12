@@ -339,3 +339,84 @@ export const ModalContent = styled.div`
     margin-bottom: 1rem;
   }
 `
+
+export const CartModal = styled.div`
+  background-color: #fff;
+  position: absolute;
+  top: 75px;
+  right: 0;
+  z-index: 999;
+  width: 95%;
+  margin: 0 8px;
+  max-width: 600px;
+  color: #000;
+  padding: 1rem;
+  box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.1);
+
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: animationLeft 0.3s forwards ease-in-out;
+
+  @keyframes animationLeft {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-bottom: 3rem;
+    margin-top: 1rem;
+    text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 320px) {
+    top: 71px;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+
+  .buy-now-link {
+    width: 100;
+    text-decoration: none;
+    background-color: #222222;
+    margin: 1rem 0;
+    align-self: end;
+
+    color: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+    }
+  }
+`
+
+export const ModalHeader = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h1 {
+    font-weight: 300;
+    letter-spacing: 0.4rem;
+  }
+`
+
+export const EmptyCart = styled.div`
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+
+  p {
+    font-size: 20px;
+  }
+`

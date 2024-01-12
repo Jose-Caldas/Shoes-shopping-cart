@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { CartContainer } from '../Cart/styles'
 
 export const CardContainer = styled.section`
   position: relative;

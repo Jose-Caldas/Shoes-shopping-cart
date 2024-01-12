@@ -1,11 +1,8 @@
 import { useSelector } from 'react-redux'
-import {
-  selectProductsCount,
-  selectProductsTotalPrice,
-} from '../../app/cartSelectors'
+import { selectProductsTotalPrice } from '../../app/cartSelectors'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import * as S from './styles'
-import { AiOutlineShoppingCart, AiOutlineArrowLeft } from 'react-icons/ai'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { clearCart } from '../../features/cart/cartSlice'
 import EmptyCart from '../emptyCart'
 import { Link } from 'react-router-dom'
@@ -18,8 +15,6 @@ const Cart = () => {
   const productsTotalPrice = useSelector(selectProductsTotalPrice)
   const dispatch = useAppDispatch()
 
-  const productsCount = useAppSelector(selectProductsCount)
-
   function handleClearCart() {
     dispatch(clearCart())
     localStorage.removeItem('cartItems')
@@ -30,10 +25,12 @@ const Cart = () => {
       <S.Header>
         <S.HeaderContent>
           <S.Logo to="/">SH🛒PPING</S.Logo>
-          <S.CartView to="/cart">
-            <AiOutlineShoppingCart color="#fff" size={30} />
-            <p>({productsCount})</p>
-          </S.CartView>
+          <S.ReturnShopping>
+            <Link to="/">
+              <AiOutlineArrowLeft size={18} color="#fff" />
+              <span>Continue Shopping</span>
+            </Link>
+          </S.ReturnShopping>
         </S.HeaderContent>
       </S.Header>
       <S.CartTitle>Shopping Cart</S.CartTitle>

@@ -1,8 +1,10 @@
-import { SetStateAction } from 'react'
-import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { SetStateAction, useState } from 'react'
+import { AiOutlineShoppingCart, AiOutlineClose } from 'react-icons/ai'
 import * as S from './styles'
 import { selectProductsCount } from '../../app/cartSelectors'
 import { useAppSelector } from '../../app/hooks'
+import CartModal from '../cartModal'
+import { Link } from 'react-router-dom'
 
 export type NavigationProps = {
   handleInputChange: (event: {
@@ -12,7 +14,16 @@ export type NavigationProps = {
 }
 
 function Navigation({ handleInputChange, query }: NavigationProps) {
+  const [isModalOpen, setIsmodalOpen] = useState(false)
   const productsCount = useAppSelector(selectProductsCount)
+  const { products } = useAppSelector((state) => state.cart)
+
+  const handleOpenModal = () => {
+    setIsmodalOpen(!isModalOpen)
+  }
+  const handleCloseModal = () => {
+    setIsmodalOpen(false)
+  }
 
   return (
     <S.Navigation>
@@ -28,11 +39,46 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
       />
 
       <S.Profile>
-        <S.CartView to="/cart">
+        <S.CartView to="" onClick={handleOpenModal}>
           <AiOutlineShoppingCart color="#fff" size={30} />
           <p>({productsCount})</p>
         </S.CartView>
       </S.Profile>
+      {isModalOpen && (
+        <S.Modal>
+          {products.length > 0 ? (
+            <>
+              <S.ModalHeader>
+                <h1>Shopping Cart</h1>
+                <AiOutlineClose
+                  onClick={handleCloseModal}
+                  size={30}
+                  color="#e63946"
+                  cursor="pointer"
+                />
+              </S.ModalHeader>
+              {products.map((product) => (
+                <CartModal product={product} />
+              ))}
+              <div className="link">
+                <Link className="buy-now-link" to="/cart">
+                  Buy Now
+                </Link>
+              </div>
+            </>
+          ) : (
+            <S.EmptyCart>
+              <p>Your cart is currently empty</p>
+              <AiOutlineClose
+                onClick={handleCloseModal}
+                size={30}
+                color="#e63946"
+                cursor="pointer"
+              />
+            </S.EmptyCart>
+          )}
+        </S.Modal>
+      )}
     </S.Navigation>
   )
 }

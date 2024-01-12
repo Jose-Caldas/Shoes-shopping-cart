@@ -251,6 +251,10 @@ export const Logo = styled(Link)`
   font-size: 1.5rem;
   text-decoration: none;
   color: #fff;
+
+  @media screen and (max-width: 480px) {
+    font-size: 15px;
+  }
 `
 
 export const HeaderContent = styled.div`
@@ -258,18 +262,6 @@ export const HeaderContent = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-`
-
-export const CartView = styled(Link)`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  text-decoration: none;
-
-  p {
-    color: #fff;
-    font-size: 1.5rem;
-  }
 `
 
 export const CartTitle = styled.h2`
@@ -284,4 +276,22 @@ export const ReturnShop = styled(Link)`
   gap: 0.5rem;
   text-decoration: none;
   color: #444444;
+`
+
+export const ReturnShopping = styled.div`
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+
+    @media screen and (max-width: 480px) {
+      font-size: 12px;
+      gap: 4px;
+    }
+  }
+
+  span {
+    color: #fff;
+  }
 `

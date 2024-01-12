@@ -7,16 +7,38 @@ import {
   AiOutlineArrowLeft,
   AiOutlineShoppingCart,
   AiFillCheckCircle,
+  AiOutlineClose,
 } from 'react-icons/ai'
 import { selectProductsCount } from '../../app/cartSelectors'
 import { FiHeart } from 'react-icons/fi'
 import products from '../../data/products'
 import { addProduct } from '../../features/cart/cartSlice'
 import { useState } from 'react'
+import CartModal from '../cartModal'
+
+interface ModalItemProps {
+  id: string
+  img: string
+  title: string
+  reviews: string
+  prevPrice: number
+  newPrice: number
+  company?: string
+  color?: string
+  category?: string
+  quantity?: number
+}
 
 function Product() {
   const dispatch = useAppDispatch()
   const [isOpenModal, setIsOpenModal] = useState(false)
+  const params = useParams()
+  const productsCount = useAppSelector(selectProductsCount)
+  const product = products.find((item) => item.id === params.id)
+  const [isModaCartlOpen, setIsmodalCartOpen] = useState(false)
+
+  const storage = localStorage.getItem('cartItems')
+  const modalItems: ModalItemProps[] = storage && JSON.parse(storage)
 
   const handleBuyNowProductClick = () => {
     dispatch(addProduct(product))
@@ -30,18 +52,26 @@ function Product() {
     setIsOpenModal(false)
   }
 
-  const params = useParams()
-  const productsCount = useAppSelector(selectProductsCount)
-  const product = products.find((item) => item.id === params.id)
+  const handleOpenModal = () => {
+    setIsmodalCartOpen(!isModaCartlOpen)
+  }
+  const handleCloseModal = () => {
+    setIsmodalCartOpen(false)
+  }
 
-  if (product === undefined) return null
+  if (product === undefined)
+    return (
+      <div>
+        <p>Oops! something went wrong</p>
+      </div>
+    )
 
   return (
     <S.ProductContainer>
       <S.Header>
         <S.HeaderContent>
           <S.Logo to="/">SH🛒PPING</S.Logo>
-          <S.CartView to="/cart">
+          <S.CartView to="" onClick={handleOpenModal}>
             <AiOutlineShoppingCart color="#fff" size={30} />
             <p>({productsCount})</p>
           </S.CartView>
@@ -123,10 +153,44 @@ function Product() {
           </S.ModalContent>
         </S.Modal>
       )}
+      {isModaCartlOpen && (
+        <S.CartModal>
+          {modalItems.length > 0 ? (
+            <>
+              <S.ModalHeader>
+                <h1>Shopping Cart</h1>
+                <AiOutlineClose
+                  onClick={handleCloseModal}
+                  size={30}
+                  color="#e63946"
+                  cursor="pointer"
+                />
+              </S.ModalHeader>
+              {modalItems.map((item) => (
+                <CartModal key={item.id} product={item} />
+              ))}
+
+              <div className="link">
+                <Link className="buy-now-link" to="/cart">
+                  Buy Now
+                </Link>
+              </div>
+            </>
+          ) : (
+            <S.EmptyCart>
+              <p>Your cart is currently empty</p>
+              <AiOutlineClose
+                onClick={handleCloseModal}
+                size={30}
+                color="#e63946"
+                cursor="pointer"
+              />
+            </S.EmptyCart>
+          )}
+        </S.CartModal>
+      )}
     </S.ProductContainer>
   )
 }
 
 export default Product
-
-// https://youtu.be/zC4zRlQVDAw
