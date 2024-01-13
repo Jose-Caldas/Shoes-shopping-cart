@@ -58,7 +58,7 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
                 />
               </S.ModalHeader>
               {products.map((product) => (
-                <CartModal product={product} />
+                <CartModal key={product.id} product={product} />
               ))}
               <div className="link">
                 <Link className="buy-now-link" to="/cart">

@@ -86,7 +86,7 @@ export const Modal = styled.div`
   max-width: 600px;
   color: #000;
   padding: 1rem;
-  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
   opacity: 0;
   transform: translateY(-20px);
@@ -96,6 +96,33 @@ export const Modal = styled.div`
     to {
       opacity: 1;
       transform: initial;
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: 57px;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    transform: rotate(45deg);
+
+    @media screen and (max-width: 768px) {
+      right: 44px;
+    }
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: dropdowm 0.3s forwards ease-in-out;
+
+    @keyframes dropdowm {
+      to {
+        opacity: 1;
+        transform: initial;
+        transform: rotate(45deg);
+      }
     }
   }
 

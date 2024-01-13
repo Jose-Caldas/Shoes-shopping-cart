@@ -123,7 +123,7 @@ function Product() {
           <h3>{product.title}</h3>
           <h4>
             ${product.newPrice},00{' '}
-            <span>or 5x of ${product.newPrice / 5},00</span>
+            <span>or in 5 installments of ${product.newPrice / 5},00</span>
           </h4>
           <S.LinksContainer>
             <S.AddToCartLink to="" onClick={handleAddProductClick}>
