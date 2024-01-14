@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from 'react'
+import { SetStateAction, useEffect, useRef, useState } from 'react'
 import { AiOutlineShoppingCart, AiOutlineClose } from 'react-icons/ai'
 import * as S from './styles'
 import { selectProductsCount } from '../../app/cartSelectors'
@@ -14,6 +14,8 @@ export type NavigationProps = {
 }
 
 function Navigation({ handleInputChange, query }: NavigationProps) {
+  const modalRef = useRef<HTMLDivElement | null>(null)
+
   const [isModalOpen, setIsmodalOpen] = useState(false)
   const productsCount = useAppSelector(selectProductsCount)
   const { products } = useAppSelector((state) => state.cart)
@@ -24,6 +26,19 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
   const handleCloseModal = () => {
     setIsmodalOpen(false)
   }
+
+  useEffect(() => {
+    let handler = (e: { target: any }) => {
+      if (modalRef.current !== null && !modalRef.current.contains(e.target)) {
+        setIsmodalOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+
+    return () => {
+      document.removeEventListener('mousedown', handler)
+    }
+  }, [])
 
   return (
     <S.Navigation>
@@ -39,13 +54,14 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
       />
 
       <S.Profile>
-        <S.CartView to="" onClick={handleOpenModal}>
+        <S.CartView onClick={handleOpenModal} disabled={isModalOpen}>
           <AiOutlineShoppingCart color="#fff" size={30} />
           <p>({productsCount})</p>
         </S.CartView>
       </S.Profile>
+
       {isModalOpen && (
-        <S.Modal>
+        <S.Modal ref={modalRef}>
           {products.length > 0 ? (
             <>
               <S.ModalHeader>

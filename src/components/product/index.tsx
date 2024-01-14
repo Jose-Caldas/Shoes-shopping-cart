@@ -13,7 +13,7 @@ import { selectProductsCount } from '../../app/cartSelectors'
 import { FiHeart } from 'react-icons/fi'
 import products from '../../data/products'
 import { addProduct } from '../../features/cart/cartSlice'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import CartModal from '../cartModal'
 
 interface ModalItemProps {
@@ -30,34 +30,50 @@ interface ModalItemProps {
 }
 
 function Product() {
+  const modalRef = useRef<HTMLDivElement | null>(null)
+
   const dispatch = useAppDispatch()
-  const [isOpenModal, setIsOpenModal] = useState(false)
+  const [isOpenModalInfo, setIsOpenModalInfo] = useState(false)
   const params = useParams()
   const productsCount = useAppSelector(selectProductsCount)
   const product = products.find((item) => item.id === params.id)
-  const [isModaCartlOpen, setIsmodalCartOpen] = useState(false)
+  const [isOpenModalCart, setIsOpenModalCart] = useState(false)
 
   const storage = localStorage.getItem('cartItems')
-  const modalItems: ModalItemProps[] = storage && JSON.parse(storage)
+  const cartItems: ModalItemProps[] = storage && JSON.parse(storage)
 
   const handleBuyNowProductClick = () => {
     dispatch(addProduct(product))
   }
+
   const handleAddProductClick = () => {
     dispatch(addProduct(product))
-    setIsOpenModal(true)
+    setIsOpenModalInfo(true)
   }
 
-  const handleModalClick = () => {
-    setIsOpenModal(false)
+  const handleCloseModalInfo = () => {
+    setIsOpenModalInfo(false)
   }
 
   const handleOpenModal = () => {
-    setIsmodalCartOpen(!isModaCartlOpen)
+    setIsOpenModalCart(!isOpenModalCart)
   }
   const handleCloseModal = () => {
-    setIsmodalCartOpen(false)
+    setIsOpenModalCart(false)
   }
+
+  useEffect(() => {
+    let handler = (e: { target: any }) => {
+      if (!modalRef.current?.contains(e.target)) {
+        setIsOpenModalCart(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+
+    return () => {
+      document.removeEventListener('mousedown', handler)
+    }
+  }, [])
 
   if (product === undefined)
     return (
@@ -71,7 +87,7 @@ function Product() {
       <S.Header>
         <S.HeaderContent>
           <S.Logo to="/">SH🛒PPING</S.Logo>
-          <S.CartView to="" onClick={handleOpenModal}>
+          <S.CartView onClick={handleOpenModal} disabled={isOpenModalCart}>
             <AiOutlineShoppingCart color="#fff" size={30} />
             <p>({productsCount})</p>
           </S.CartView>
@@ -139,23 +155,23 @@ function Product() {
           <span>Return Shopping</span>
         </S.ReturnShopping>
       </S.ProductCard>
-      {isOpenModal && (
+      {isOpenModalInfo && (
         <S.Modal>
           <S.ModalContent>
             <AiFillCheckCircle fill="green" size={40} />
             <p>Product added to cart</p>
-            <Link className="continue" to="/" onClick={handleModalClick}>
+            <Link className="continue" to="/" onClick={handleCloseModalInfo}>
               Continue Shopping
             </Link>
-            <Link className="go-to" to="/Cart" onClick={handleModalClick}>
+            <Link className="go-to" to="/Cart" onClick={handleCloseModalInfo}>
               Go to Cart
             </Link>
           </S.ModalContent>
         </S.Modal>
       )}
-      {isModaCartlOpen && (
-        <S.CartModal>
-          {modalItems.length > 0 ? (
+      {isOpenModalCart && (
+        <S.CartModal ref={modalRef}>
+          {cartItems.length > 0 ? (
             <>
               <S.ModalHeader>
                 <h1>Shopping Cart</h1>
@@ -166,7 +182,7 @@ function Product() {
                   cursor="pointer"
                 />
               </S.ModalHeader>
-              {modalItems.map((item) => (
+              {cartItems.map((item) => (
                 <CartModal key={item.id} product={item} />
               ))}
 

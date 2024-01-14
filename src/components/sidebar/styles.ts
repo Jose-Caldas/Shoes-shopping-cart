@@ -18,10 +18,10 @@ export const Sidebar = styled.section<SidebarProps>`
 
     @media screen and (max-width: 1044px) {
       background-color: #fff;
-      z-index: 999;
+      z-index: 1;
       display: ${visible ? 'block' : 'none'};
 
-      padding-top: 2rem;
+      padding-top: 20px;
       width: 100%;
       max-width: 100%;
 
@@ -35,6 +35,10 @@ export const Sidebar = styled.section<SidebarProps>`
           transform: initial;
         }
       }
+    }
+
+    @media screen and (max-width: 480px) {
+      font-size: 12px;
     }
   `}
 `

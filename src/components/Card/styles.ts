@@ -31,7 +31,7 @@ export const CardHeader = styled.header`
   top: 32px;
 
   svg {
-    z-index: 9999;
+    z-index: 1;
     cursor: pointer;
   }
 `

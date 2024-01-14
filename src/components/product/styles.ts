@@ -28,11 +28,14 @@ export const HeaderContent = styled.div`
   width: 100%;
 `
 
-export const CartView = styled(Link)`
+export const CartView = styled.button`
   display: flex;
   align-items: center;
   text-decoration: none;
   gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
 
   p {
     color: #fff;
@@ -284,6 +287,17 @@ export const ModalContent = styled.div`
   border-radius: 4px;
   gap: 1rem;
 
+  opacity: 0;
+  transform: translateY(20px);
+  animation: animationLeft 0.3s forwards ease-in-out;
+
+  @keyframes animationLeft {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
+
   @media screen and (max-width: 420px) {
     padding: 30px;
   }
@@ -345,7 +359,7 @@ export const CartModal = styled.div`
   position: absolute;
   top: 75px;
   right: 0;
-  z-index: 999;
+  z-index: 1;
   width: 95%;
   margin: 0 8px;
   max-width: 600px;
@@ -426,10 +440,12 @@ export const ModalHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 2rem 0;
 
   h1 {
     font-weight: 300;
     letter-spacing: 0.4rem;
+    margin: 0;
   }
 `
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { IProduct } from '../../interface'
 import { AiOutlineDelete } from 'react-icons/ai'
 import * as S from './styles'

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Navigation = styled.section`
@@ -10,10 +9,14 @@ export const Navigation = styled.section`
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 2;
 
   @media screen and (max-width: 768px) {
     padding: 20px 16px;
+  }
+
+  @media screen and (max-width: 320px) {
+    height: 79px;
   }
 
   .logo-mobile {
@@ -62,13 +65,14 @@ export const Profile = styled.div`
   }
 `
 
-export const CartView = styled(Link)`
+export const CartView = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
+  background: none;
+  border: none;
   cursor: pointer;
-  text-decoration: none;
 
   p {
     font-size: 1.5rem;
@@ -80,13 +84,13 @@ export const Modal = styled.div`
   position: absolute;
   top: 75px;
   right: 0;
-  z-index: 999;
   width: 95%;
   margin: 0 8px;
   max-width: 600px;
   color: #000;
   padding: 1rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 2;
 
   opacity: 0;
   transform: translateY(-20px);
