@@ -5,6 +5,7 @@ import { selectProductsCount } from '../../app/cartSelectors'
 import { useAppSelector } from '../../app/hooks'
 import CartModal from '../cartModal'
 import { Link } from 'react-router-dom'
+import EmptyCartDropdown from '../emptyCartDropdown'
 
 export type NavigationProps = {
   handleInputChange: (event: {
@@ -23,7 +24,7 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
   const handleOpenModal = () => {
     setIsmodalOpen(!isModalOpen)
   }
-  const handleCloseModal = () => {
+  const handleCloseDropdown = () => {
     setIsmodalOpen(false)
   }
 
@@ -67,7 +68,7 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
               <S.ModalHeader>
                 <h1>Shopping Cart</h1>
                 <AiOutlineClose
-                  onClick={handleCloseModal}
+                  onClick={handleCloseDropdown}
                   size={25}
                   color="#e63946"
                   cursor="pointer"
@@ -83,15 +84,7 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
               </div>
             </>
           ) : (
-            <S.EmptyCart>
-              <p>Your cart is currently empty</p>
-              <AiOutlineClose
-                onClick={handleCloseModal}
-                size={30}
-                color="#e63946"
-                cursor="pointer"
-              />
-            </S.EmptyCart>
+            <EmptyCartDropdown handleCloseDropdown={handleCloseDropdown} />
           )}
         </S.Modal>
       )}

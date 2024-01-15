@@ -15,6 +15,7 @@ import products from '../../data/products'
 import { addProduct } from '../../features/cart/cartSlice'
 import { useEffect, useRef, useState } from 'react'
 import CartModal from '../cartModal'
+import EmptyCartDropdown from '../emptyCartDropdown'
 
 interface ModalItemProps {
   id: string
@@ -37,7 +38,7 @@ function Product() {
   const params = useParams()
   const productsCount = useAppSelector(selectProductsCount)
   const product = products.find((item) => item.id === params.id)
-  const [isOpenModalCart, setIsOpenModalCart] = useState(false)
+  const [isOpenDropdown, setIsOpenDropdown] = useState(false)
 
   const storage = localStorage.getItem('cartItems')
   const cartItems: ModalItemProps[] = storage && JSON.parse(storage)
@@ -56,16 +57,16 @@ function Product() {
   }
 
   const handleOpenModal = () => {
-    setIsOpenModalCart(!isOpenModalCart)
+    setIsOpenDropdown(!isOpenDropdown)
   }
-  const handleCloseModal = () => {
-    setIsOpenModalCart(false)
+  const handleCloseDropdown = () => {
+    setIsOpenDropdown(false)
   }
 
   useEffect(() => {
     let handler = (e: { target: any }) => {
       if (!modalRef.current?.contains(e.target)) {
-        setIsOpenModalCart(false)
+        setIsOpenDropdown(false)
       }
     }
     document.addEventListener('mousedown', handler)
@@ -87,7 +88,7 @@ function Product() {
       <S.Header>
         <S.HeaderContent>
           <S.Logo to="/">SH🛒PPING</S.Logo>
-          <S.CartView onClick={handleOpenModal} disabled={isOpenModalCart}>
+          <S.CartView onClick={handleOpenModal} disabled={isOpenDropdown}>
             <AiOutlineShoppingCart color="#fff" size={30} />
             <p>({productsCount})</p>
           </S.CartView>
@@ -169,14 +170,14 @@ function Product() {
           </S.ModalContent>
         </S.Modal>
       )}
-      {isOpenModalCart && (
+      {isOpenDropdown && (
         <S.CartModal ref={modalRef}>
           {cartItems?.length > 0 ? (
             <>
               <S.ModalHeader>
                 <h1>Shopping Cart</h1>
                 <AiOutlineClose
-                  onClick={handleCloseModal}
+                  onClick={handleCloseDropdown}
                   size={25}
                   color="#e63946"
                   cursor="pointer"
@@ -193,15 +194,7 @@ function Product() {
               </div>
             </>
           ) : (
-            <S.EmptyCart>
-              <p>Your cart is currently empty</p>
-              <AiOutlineClose
-                onClick={handleCloseModal}
-                size={30}
-                color="#e63946"
-                cursor="pointer"
-              />
-            </S.EmptyCart>
+            <EmptyCartDropdown handleCloseDropdown={handleCloseDropdown} />
           )}
         </S.CartModal>
       )}

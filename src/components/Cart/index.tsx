@@ -1,14 +1,13 @@
 import { useSelector } from 'react-redux'
 import { selectProductsTotalPrice } from '../../app/cartSelectors'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import * as S from './styles'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { clearCart } from '../../features/cart/cartSlice'
-import EmptyCart from '../emptyCart'
 import { Link } from 'react-router-dom'
-
 import CartItemMobile from './cartItemMobile'
 import CartItemDesktop from './cartItemDesktop'
+import EmptyCartCheckout from '../emptyCartCheckout'
+import * as S from './styles'
 
 const Cart = () => {
   const { products } = useAppSelector((state) => state.cart)
@@ -33,7 +32,7 @@ const Cart = () => {
           </S.ReturnShopping>
         </S.HeaderContent>
       </S.Header>
-      <S.CartTitle>Shopping Cart</S.CartTitle>
+      <S.CartTitle>My Shopping Cart</S.CartTitle>
       {products.length > 0 ? (
         <>
           <S.ProductMobile>
@@ -96,7 +95,7 @@ const Cart = () => {
           </S.ProductContainer>
         </>
       ) : (
-        <EmptyCart />
+        <EmptyCartCheckout />
       )}
     </S.CartContainer>
   )

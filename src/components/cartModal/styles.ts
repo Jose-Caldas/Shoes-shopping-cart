@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 export const CartModalContainer = styled.section`
   margin-bottom: 2rem;
-  margin-top: 0.5rem;
-  padding-top: 0.5rem;
+  margin: 0.5rem 0;
+  padding-top: 1rem;
   border-top: 1px solid #eee;
 `
 

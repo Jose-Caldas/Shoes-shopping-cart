@@ -148,19 +148,23 @@ export const Modal = styled.div`
   }
 
   .buy-now-link {
-    width: 100;
     text-decoration: none;
+    text-align: center;
     background-color: #222222;
     margin: 1rem 0;
     align-self: end;
-
     color: #fff;
-    padding: 1rem;
+    padding: 1rem 2rem;
+    letter-spacing: 0.1rem;
     border-radius: 4px;
 
     &:hover,
     &:focus {
       opacity: 0.8;
+    }
+
+    @media screen and (max-width: 400px) {
+      width: 100%;
     }
   }
 `
@@ -180,16 +184,5 @@ export const ModalHeader = styled.header`
       letter-spacing: 0.2rem;
       font-size: 1rem;
     }
-  }
-`
-
-export const EmptyCart = styled.div`
-  height: 200px;
-  display: flex;
-  justify-content: space-between;
-  padding: 2rem;
-
-  p {
-    font-size: 20px;
   }
 `
