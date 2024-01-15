@@ -15,7 +15,7 @@ export const Container = styled.section`
   .sidebar-label-container {
     display: block;
     position: relative;
-    padding-left: 35px;
+    padding-left: 30px;
     margin-bottom: 12px;
     cursor: pointer;
     -webkit-user-select: none;
@@ -32,7 +32,7 @@ export const Container = styled.section`
 
   .checkmark {
     position: absolute;
-    top: 0;
+    top: -3px;
     left: 0;
     height: 20px;
     width: 20px;

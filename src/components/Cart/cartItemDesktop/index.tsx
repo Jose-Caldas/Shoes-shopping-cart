@@ -35,9 +35,9 @@ function CartItemDesktop({ product }: CartPageProps) {
           <div className="cart-items">
             <div className="cart-item" key={product.id}>
               <div className="cart-product">
-                <div className="image-container">
+                <S.ImageLink to={`/product/${product.id}`}>
                   <img src={product.img} alt={product.title} />
-                </div>
+                </S.ImageLink>
                 <div>
                   <h3 className="product-name">{product.title}</h3>
                   <AiFillStar className="rating-star" />

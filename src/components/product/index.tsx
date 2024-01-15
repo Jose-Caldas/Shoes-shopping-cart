@@ -177,7 +177,7 @@ function Product() {
                 <h1>Shopping Cart</h1>
                 <AiOutlineClose
                   onClick={handleCloseModal}
-                  size={30}
+                  size={25}
                   color="#e63946"
                   cursor="pointer"
                 />

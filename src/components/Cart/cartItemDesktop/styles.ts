@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const CartContainer = styled.section`
@@ -27,15 +28,6 @@ export const Content = styled.div`
 
   .rating-star {
     color: #d5ab55;
-  }
-
-  .image-container {
-    width: 210px;
-  }
-
-  .cart-item .cart-product img {
-    width: 192px;
-    max-width: 100%;
   }
 
   .cart-item .cart-product h3 {
@@ -83,6 +75,20 @@ export const Content = styled.div`
     justify-self: right;
     padding-right: 0.5rem;
     font-weight: bold;
+  }
+`
+
+export const ImageLink = styled(Link)`
+  width: 210px;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  img {
+    width: 192px;
+    max-width: 100%;
   }
 `
 

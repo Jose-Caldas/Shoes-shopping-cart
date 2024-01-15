@@ -440,12 +440,17 @@ export const ModalHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 2rem 0;
+  margin: 1rem 0;
 
   h1 {
     font-weight: 300;
     letter-spacing: 0.4rem;
     margin: 0;
+
+    @media screen and (max-width: 380px) {
+      letter-spacing: 0.2rem;
+      font-size: 1rem;
+    }
   }
 `
 
