@@ -171,7 +171,7 @@ function Product() {
       )}
       {isOpenModalCart && (
         <S.CartModal ref={modalRef}>
-          {cartItems.length > 0 ? (
+          {cartItems?.length > 0 ? (
             <>
               <S.ModalHeader>
                 <h1>Shopping Cart</h1>
