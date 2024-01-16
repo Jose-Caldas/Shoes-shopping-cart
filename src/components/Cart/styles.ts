@@ -232,7 +232,7 @@ export const CartHeader = styled.div`
   button {
     border: none;
     background: transparent;
-    color: #ef233c;
+    color: #e63946;
     font-size: 1.325rem;
 
     cursor: pointer;
@@ -294,4 +294,17 @@ export const ReturnShopping = styled.div`
   span {
     color: #fff;
   }
+`
+
+export const ModalRemove = styled.div`
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.5rem;
 `

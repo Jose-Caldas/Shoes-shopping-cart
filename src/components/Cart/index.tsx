@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectProductsTotalPrice } from '../../app/cartSelectors'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
@@ -7,16 +8,27 @@ import { Link } from 'react-router-dom'
 import CartItemMobile from './cartItemMobile'
 import CartItemDesktop from './cartItemDesktop'
 import EmptyCartCheckout from '../emptyCartCheckout'
+import ModalClearCart from '../modalClearCart'
 import * as S from './styles'
 
 const Cart = () => {
   const { products } = useAppSelector((state) => state.cart)
+  const [isOpenModal, setIsOpenModal] = useState(false)
   const productsTotalPrice = useSelector(selectProductsTotalPrice)
   const dispatch = useAppDispatch()
 
   function handleClearCart() {
     dispatch(clearCart())
     localStorage.removeItem('cartItems')
+    setIsOpenModal(false)
+  }
+
+  const handleOpenModal = () => {
+    setIsOpenModal(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsOpenModal(false)
   }
 
   return (
@@ -37,7 +49,7 @@ const Cart = () => {
         <>
           <S.ProductMobile>
             <S.ButtonContainer>
-              <button className="clear-cart" onClick={handleClearCart}>
+              <button className="clear-cart" onClick={handleOpenModal}>
                 Clear Cart
               </button>
             </S.ButtonContainer>
@@ -73,7 +85,7 @@ const Cart = () => {
                 <CartItemDesktop key={product.id} product={product} />
               ))}
               <div className="cart-summary">
-                <button className="clear-cart" onClick={handleClearCart}>
+                <button className="clear-cart" onClick={handleOpenModal}>
                   Clear Cart
                 </button>
                 <div className="cart-checkout">
@@ -96,6 +108,14 @@ const Cart = () => {
         </>
       ) : (
         <EmptyCartCheckout />
+      )}
+      {isOpenModal && (
+        <S.ModalRemove>
+          <ModalClearCart
+            handleClearCart={handleClearCart}
+            setIsOpenModal={handleCloseModal}
+          />
+        </S.ModalRemove>
       )}
     </S.CartContainer>
   )

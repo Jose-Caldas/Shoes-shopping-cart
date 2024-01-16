@@ -265,17 +265,16 @@ export const ReturnShopping = styled(Link)`
 `
 
 export const Modal = styled.div`
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
   background-color: rgba(0, 0, 0, 0.4);
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   padding: 1rem;
-  position: fixed;
 `
 
 export const ModalContent = styled.div`
