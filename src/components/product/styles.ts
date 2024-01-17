@@ -46,7 +46,7 @@ export const CartView = styled.button`
 export const ProductCard = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 8rem auto;
+  margin: 4rem auto 2rem;
   padding: 0 16px;
   gap: 3rem;
 
@@ -74,7 +74,12 @@ export const ProductCard = styled.div`
   }
 `
 
-export const Title = styled.h2``
+export const ProductTitle = styled.h1`
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  margin-top: 2rem;
+`
 
 export const ImageBox = styled.div`
   width: 200px;
@@ -258,6 +263,7 @@ export const AddCart = styled(Link)`
 export const ReturnShopping = styled(Link)`
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 
   text-decoration: none;
   color: gray;

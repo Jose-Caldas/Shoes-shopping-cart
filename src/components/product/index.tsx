@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { Link } from 'react-router-dom'
-import * as S from './styles'
 import {
   AiFillStar,
   AiOutlineArrowLeft,
@@ -16,6 +15,8 @@ import { addProduct } from '../../features/cart/cartSlice'
 import { useEffect, useRef, useState } from 'react'
 import CartModal from '../cartModal'
 import EmptyCartDropdown from '../emptyCartDropdown'
+import * as S from './styles'
+import Accordion from '../accordion'
 
 interface ModalItemProps {
   id: string
@@ -34,10 +35,12 @@ function Product() {
   const modalRef = useRef<HTMLDivElement | null>(null)
 
   const dispatch = useAppDispatch()
-  const [isOpenModalInfo, setIsOpenModalInfo] = useState(false)
   const params = useParams()
+
   const productsCount = useAppSelector(selectProductsCount)
   const product = products.find((item) => item.id === params.id)
+
+  const [isOpenModalInfo, setIsOpenModalInfo] = useState(false)
   const [isOpenDropdown, setIsOpenDropdown] = useState(false)
 
   const storage = localStorage.getItem('cartItems')
@@ -94,6 +97,7 @@ function Product() {
           </S.CartView>
         </S.HeaderContent>
       </S.Header>
+      <S.ProductTitle>{product.title}</S.ProductTitle>
       <S.ProductCard>
         <div>
           <S.ImageBox>
@@ -153,9 +157,10 @@ function Product() {
         </S.SummaryContainer>
         <S.ReturnShopping to="/">
           <AiOutlineArrowLeft size={20} />
-          <span>Return Shopping</span>
+          <span>Continue Shopping</span>
         </S.ReturnShopping>
       </S.ProductCard>
+      <Accordion />
       {isOpenModalInfo && (
         <S.Modal>
           <S.ModalContent>
