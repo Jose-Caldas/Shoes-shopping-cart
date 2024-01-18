@@ -92,17 +92,6 @@ export const Modal = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   z-index: 2;
 
-  opacity: 0;
-  transform: translateY(-20px);
-  animation: animationLeft 0.3s forwards ease-in-out;
-
-  @keyframes animationLeft {
-    to {
-      opacity: 1;
-      transform: initial;
-    }
-  }
-
   &::before {
     content: '';
     position: absolute;

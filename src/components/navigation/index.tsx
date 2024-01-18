@@ -3,7 +3,7 @@ import { AiOutlineShoppingCart, AiOutlineClose } from 'react-icons/ai'
 import * as S from './styles'
 import { selectProductsCount } from '../../app/cartSelectors'
 import { useAppSelector } from '../../app/hooks'
-import CartModal from '../cartModal'
+import CartDropdown from '../cartDropdown'
 import { Link } from 'react-router-dom'
 import EmptyCartDropdown from '../emptyCartDropdown'
 
@@ -62,7 +62,7 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
       </S.Profile>
 
       {isModalOpen && (
-        <S.Modal ref={modalRef}>
+        <S.Modal className="animation-top" ref={modalRef}>
           {products.length > 0 ? (
             <>
               <S.ModalHeader>
@@ -75,7 +75,7 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
                 />
               </S.ModalHeader>
               {products.map((product) => (
-                <CartModal key={product.id} product={product} />
+                <CartDropdown key={product.id} product={product} />
               ))}
               <div className="link">
                 <Link className="buy-now-link" to="/cart">

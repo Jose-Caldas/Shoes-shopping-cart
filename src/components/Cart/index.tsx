@@ -56,7 +56,7 @@ const Cart = () => {
             {products.map((product) => (
               <CartItemMobile key={product.id} product={product} />
             ))}
-            <S.MobileSummary>
+            <S.MobileSummary className="animation-right">
               <div className="cart-checkout">
                 <div className="subtotal">
                   <span>Purchase Total</span>
@@ -73,7 +73,7 @@ const Cart = () => {
               </div>
             </S.MobileSummary>
           </S.ProductMobile>
-          <S.ProductContainer>
+          <S.ProductContainer className="animation-left">
             <div>
               <div className="titles">
                 <h3 className="product-title">Product</h3>

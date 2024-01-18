@@ -10,7 +10,7 @@ function ModalClearCart({
   handleClearCart,
 }: ModalClearCartProps) {
   return (
-    <S.ModalContainer>
+    <S.ModalContainer className="animation-left">
       <h1>Clear your Cart</h1>
       <p>Are you sure you want to clear your cart?</p>
       <button className="clear-btn" onClick={() => handleClearCart()}>

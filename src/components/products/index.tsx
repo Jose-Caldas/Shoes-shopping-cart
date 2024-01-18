@@ -6,7 +6,7 @@ type ProductsProps = {
 }
 function Products({ result }: ProductsProps) {
   return (
-    <S.Container>
+    <S.Container className="animation-left">
       <S.Products>{result}</S.Products>
     </S.Container>
   )

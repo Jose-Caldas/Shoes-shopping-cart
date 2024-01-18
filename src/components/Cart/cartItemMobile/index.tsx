@@ -28,7 +28,7 @@ function CartItemMobile({ product }: CartItemMobileProps) {
   }
 
   return (
-    <S.CartItemContainer>
+    <S.CartItemContainer className="animation-left">
       <S.CartContent>
         <S.CartItemImage>
           <img src={product.img} alt={product.title} />

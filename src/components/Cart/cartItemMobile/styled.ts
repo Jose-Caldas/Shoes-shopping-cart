@@ -7,21 +7,6 @@ export const CartItemContainer = styled.div`
   flex-direction: column;
 
   margin-top: 1rem;
-
-  opacity: 0;
-  transform: translateX(-20px);
-  animation: animationLeft 0.3s forwards ease-in-out;
-
-  @keyframes animationLeft {
-    to {
-      opacity: 1;
-      transform: initial;
-    }
-  }
-
-  p {
-    color: #222222;
-  }
 `
 
 export const CartContent = styled.div`

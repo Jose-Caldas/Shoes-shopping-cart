@@ -6,17 +6,6 @@ export const ModalContainer = styled.section`
   border-radius: 4px;
   max-width: 400px;
 
-  opacity: 0;
-  transform: translateX(-20px);
-  animation: animationLeft 0.3s forwards ease-in-out;
-
-  @keyframes animationLeft {
-    to {
-      opacity: 1;
-      transform: initial;
-    }
-  }
-
   @media screen and (max-width: 410px) {
     padding: 2rem 1rem;
   }

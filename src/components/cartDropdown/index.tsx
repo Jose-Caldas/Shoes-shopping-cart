@@ -12,7 +12,7 @@ interface CartModalProps {
   product: IProduct
 }
 
-function CartModal({ product }: CartModalProps) {
+function CartDropdown({ product }: CartModalProps) {
   const dispatch = useAppDispatch()
 
   const handleRemoveClick = () => {
@@ -65,4 +65,4 @@ function CartModal({ product }: CartModalProps) {
   )
 }
 
-export default CartModal
+export default CartDropdown

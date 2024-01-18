@@ -14,7 +14,7 @@ function Accordion() {
   }
 
   return (
-    <S.AccordionSection>
+    <S.AccordionSection className="animation-left">
       {data.map((item, index) => (
         <S.Container key={item.id}>
           <S.CustomButton onClick={() => toggle(index)}>

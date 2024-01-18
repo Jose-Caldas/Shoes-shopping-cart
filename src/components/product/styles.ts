@@ -61,17 +61,6 @@ export const ProductCard = styled.div`
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
   }
-
-  opacity: 0;
-  transform: translateX(-20px);
-  animation: animationLeft 0.3s forwards ease-in-out;
-
-  @keyframes animationLeft {
-    to {
-      opacity: 1;
-      transform: initial;
-    }
-  }
 `
 
 export const ProductTitle = styled.h1`
@@ -294,17 +283,6 @@ export const ModalContent = styled.div`
   border-radius: 4px;
   gap: 1rem;
 
-  opacity: 0;
-  transform: translateY(20px);
-  animation: animationLeft 0.3s forwards ease-in-out;
-
-  @keyframes animationLeft {
-    to {
-      opacity: 1;
-      transform: initial;
-    }
-  }
-
   @media screen and (max-width: 420px) {
     padding: 30px;
   }
@@ -373,17 +351,6 @@ export const CartModal = styled.div`
   color: #000;
   padding: 1rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-  opacity: 0;
-  transform: translateY(-20px);
-  animation: animationLeft 0.3s forwards ease-in-out;
-
-  @keyframes animationLeft {
-    to {
-      opacity: 1;
-      transform: initial;
-    }
-  }
 
   &::before {
     content: '';

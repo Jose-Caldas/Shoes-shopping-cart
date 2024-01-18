@@ -19,10 +19,10 @@ import { FiHeart } from 'react-icons/fi'
 import products from '../../data/products'
 import { addProduct } from '../../features/cart/cartSlice'
 import { useEffect, useRef, useState } from 'react'
-import CartModal from '../cartModal'
+import CartDropdown from '../cartDropdown'
 import EmptyCartDropdown from '../emptyCartDropdown'
-import * as S from './styles'
 import Accordion from '../accordion'
+import * as S from './styles'
 
 interface ModalItemProps {
   id: string
@@ -104,7 +104,7 @@ function Product() {
         </S.HeaderContent>
       </S.Header>
       <S.ProductTitle>{product.title}</S.ProductTitle>
-      <S.ProductCard>
+      <S.ProductCard className="animation-right">
         <div>
           <S.ImageBox>
             <img src={product.img} alt={product.title} />
@@ -169,7 +169,7 @@ function Product() {
       <Accordion />
       {isOpenModalInfo && (
         <S.Modal>
-          <S.ModalContent>
+          <S.ModalContent className="animation-bottom">
             <AiFillCheckCircle fill="green" size={40} />
             <p>Product added to cart</p>
             <Link className="continue" to="/" onClick={handleCloseModalInfo}>
@@ -182,7 +182,7 @@ function Product() {
         </S.Modal>
       )}
       {isOpenDropdown && (
-        <S.CartModal ref={modalRef}>
+        <S.CartModal className="animation-top" ref={modalRef}>
           {cartItems?.length > 0 ? (
             <>
               <S.ModalHeader>
@@ -195,7 +195,7 @@ function Product() {
                 />
               </S.ModalHeader>
               {cartItems.map((item) => (
-                <CartModal key={item.id} product={item} />
+                <CartDropdown key={item.id} product={item} />
               ))}
 
               <div className="link">
@@ -209,7 +209,7 @@ function Product() {
           )}
         </S.CartModal>
       )}
-      <S.Payments>
+      <S.Payments className="animation-bottom">
         <S.CardsContainer>
           <p>Payment Methods:</p>
           <S.Cards>

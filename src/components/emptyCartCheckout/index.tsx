@@ -3,7 +3,7 @@ import { AiOutlineArrowLeft, AiOutlineShoppingCart } from 'react-icons/ai'
 
 function EmptyCartCheckout() {
   return (
-    <S.EmptyContainer>
+    <S.EmptyContainer className="animation-left">
       <S.ShoppingCartIcon>
         <AiOutlineShoppingCart color="#eee" />
       </S.ShoppingCartIcon>

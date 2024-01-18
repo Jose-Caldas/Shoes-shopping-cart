@@ -1,4 +1,11 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, keyframes } from 'styled-components'
+
+const animate = keyframes`
+  to {
+    opacity: 1;
+    transform: initial;
+  }
+`
 
 export default createGlobalStyle`
    * {
@@ -12,6 +19,30 @@ export default createGlobalStyle`
    
     display: flex;
     margin-top: 79px;
+   }
+
+   .animation-left {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: ${animate} 0.3s forwards ease-in-out;
+   }
+
+   .animation-right {
+    opacity: 0;
+    transform: translateX(20px);
+    animation: ${animate} 0.3s forwards ease-in-out;
+   }
+
+   .animation-top {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: ${animate} 0.3s forwards ease-in-out;
+   }
+
+   .animation-bottom {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: ${animate} 0.3s forwards ease-in-out;
    }
 
 `
