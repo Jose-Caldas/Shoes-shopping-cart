@@ -12,7 +12,7 @@ function Card({ product }: CardProps) {
       <S.CardDetails>
         <S.CardHeader>
           <p>30% Off</p>
-          <FiHeart />
+          <FiHeart color="#444" />
         </S.CardHeader>
         <div>
           <img className="card-img" src={product.img} alt={product.title} />

@@ -89,7 +89,7 @@ export const CartContainer = styled.div`
       font-size: 14px;
       font-weight: 200;
       margin: 0.5rem 0;
-      color: gray;
+      color: #444;
     }
 
     button {
@@ -124,6 +124,7 @@ export const CartContainer = styled.div`
         gap: 0.5rem;
         color: gray;
         letter-spacing: 1.15px;
+        color: #444;
       }
     }
   }
@@ -146,6 +147,10 @@ export const ProductContainer = styled.div`
       opacity: 1;
       transform: initial;
     }
+  }
+
+  p {
+    color: #444;
   }
 
   @media (max-width: 864px) {
@@ -200,6 +205,10 @@ export const MobileSummary = styled.div`
   margin-bottom: 4rem;
   padding: 1rem;
   margin: 16px 20px;
+
+  p {
+    color: #444;
+  }
 
   opacity: 0;
   transform: translateX(20px);
@@ -275,7 +284,6 @@ export const ReturnShop = styled(Link)`
   display: flex;
   gap: 0.5rem;
   text-decoration: none;
-  color: #444444;
 `
 
 export const ReturnShopping = styled.div`

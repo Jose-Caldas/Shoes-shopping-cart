@@ -145,7 +145,7 @@ function Product() {
 
           <S.IconBox>
             <p>Best Price</p>
-            <FiHeart />
+            <FiHeart color="#444" />
           </S.IconBox>
           <h3>{product.title}</h3>
           <h4>

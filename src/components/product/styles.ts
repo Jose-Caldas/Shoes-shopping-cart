@@ -164,7 +164,7 @@ export const SummaryContainer = styled.div`
 
     span {
       font-size: 14px;
-      color: #9c9492;
+      color: #444;
       font-weight: 300;
       letter-spacing: 1.15px;
       margin-left: 8px;
@@ -182,6 +182,7 @@ export const IconBox = styled.div`
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 300;
+    color: #444;
   }
 `
 
@@ -267,7 +268,7 @@ export const ReturnShopping = styled(Link)`
   gap: 0.5rem;
 
   text-decoration: none;
-  color: gray;
+  color: #444;
   letter-spacing: 1.15px;
 `
 
