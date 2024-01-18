@@ -8,6 +8,12 @@ import {
   AiFillCheckCircle,
   AiOutlineClose,
 } from 'react-icons/ai'
+import {
+  FaCcMastercard,
+  FaCcVisa,
+  FaCcApplePay,
+  FaGooglePay,
+} from 'react-icons/fa'
 import { selectProductsCount } from '../../app/cartSelectors'
 import { FiHeart } from 'react-icons/fi'
 import products from '../../data/products'
@@ -203,6 +209,17 @@ function Product() {
           )}
         </S.CartModal>
       )}
+      <S.Payments>
+        <S.CardsContainer>
+          <p>Payment Methods:</p>
+          <S.Cards>
+            <FaCcMastercard size={40} />
+            <FaCcVisa size={40} />
+            <FaCcApplePay size={40} />
+            <FaGooglePay size={40} />
+          </S.Cards>
+        </S.CardsContainer>
+      </S.Payments>
     </S.ProductContainer>
   )
 }

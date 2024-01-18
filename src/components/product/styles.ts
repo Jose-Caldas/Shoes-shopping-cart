@@ -46,7 +46,7 @@ export const CartView = styled.button`
 export const ProductCard = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 4rem auto 2rem;
+  margin: 2rem auto;
   padding: 0 16px;
   gap: 3rem;
 
@@ -177,6 +177,7 @@ export const IconBox = styled.div`
   justify-content: space-between;
   margin-bottom: 1rem;
   color: #9c9492;
+
   p {
     text-transform: uppercase;
     font-size: 14px;
@@ -472,4 +473,34 @@ export const EmptyCart = styled.div`
   p {
     font-size: 20px;
   }
+`
+
+export const Payments = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+`
+
+export const CardsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  max-width: 1200px;
+  padding: 1rem;
+  gap: 0.5rem;
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 390px) {
+    flex-direction: column;
+  }
+`
+
+export const Cards = styled.div`
+  display: flex;
+  gap: 0.5rem;
 `
