@@ -93,7 +93,7 @@ function Product() {
     )
 
   return (
-    <S.ProductContainer>
+    <S.Container>
       <S.Header>
         <S.HeaderContent>
           <S.Logo to="/">SH🛒PPING</S.Logo>
@@ -103,128 +103,134 @@ function Product() {
           </S.CartView>
         </S.HeaderContent>
       </S.Header>
-      <S.ProductTitle>{product.title}</S.ProductTitle>
-      <S.ProductCard className="animation-right">
-        <div>
-          <S.ImageBox>
-            <img src={product.img} alt={product.title} />
-          </S.ImageBox>
-          <S.Reviews>
-            <AiFillStar className="rating-star" />
-            <AiFillStar className="rating-star" />
-            <AiFillStar className="rating-star" />
-            <AiFillStar className="rating-star" />
+      <S.Content>
+        <S.ProductTitle>{product.title}</S.ProductTitle>
+        <S.ProductDetail>
+          <S.ProductCard className="animation-right">
+            <S.Info>
+              <S.ImageBox>
+                <img src={product.img} alt={product.title} />
+              </S.ImageBox>
+              <S.Reviews>
+                <AiFillStar className="rating-star" />
+                <AiFillStar className="rating-star" />
+                <AiFillStar className="rating-star" />
+                <AiFillStar className="rating-star" />
 
-            <span className="total-reviews">{product.reviews}</span>
-            <S.PriceContainer>
-              <p>30% Off</p>
-              <S.CardPrice>
-                <S.Price>
-                  <del>${product.prevPrice},00</del>
-                  <span>${product.newPrice},00</span>
-                </S.Price>
-              </S.CardPrice>
-            </S.PriceContainer>
-          </S.Reviews>
-          <S.SizesContainer>
-            <h1>Sizes</h1>
-            <S.SizesGrid>
-              <span>35</span>
-              <span>36</span>
-              <span>37</span>
-              <span>38</span>
-              <span>39</span>
-              <span>40</span>
-              <span>42</span>
-              <span>44</span>
-            </S.SizesGrid>
-          </S.SizesContainer>
-        </div>
-        <S.SummaryContainer>
-          <h2>Summary</h2>
+                <span className="total-reviews">{product.reviews}</span>
+                <S.PriceContainer>
+                  <p>30% Off</p>
+                  <S.CardPrice>
+                    <S.Price>
+                      <del>${product.prevPrice},00</del>
+                      <span>${product.newPrice},00</span>
+                    </S.Price>
+                  </S.CardPrice>
+                </S.PriceContainer>
+              </S.Reviews>
+              <S.SizesContainer>
+                <h1>Sizes</h1>
+                <S.SizesGrid>
+                  <span>35</span>
+                  <span>36</span>
+                  <span>37</span>
+                  <span>38</span>
+                  <span>39</span>
+                  <span>40</span>
+                  <span>42</span>
+                  <span>44</span>
+                </S.SizesGrid>
+              </S.SizesContainer>
+            </S.Info>
+            <S.Summary>
+              <h2>Summary</h2>
 
-          <S.IconBox>
-            <p>Best Price</p>
-            <FiHeart color="#444" />
-          </S.IconBox>
-          <h3>{product.title}</h3>
-          <h4>
-            ${product.newPrice},00{' '}
-            <span>or in 5 installments of ${product.newPrice / 5},00</span>
-          </h4>
-          <S.LinksContainer>
-            <S.AddToCartLink to="" onClick={handleAddProductClick}>
-              Add to Cart
-            </S.AddToCartLink>
-            <S.BuyNowLink to="/cart" onClick={handleBuyNowProductClick}>
-              Buy Now
-            </S.BuyNowLink>
-          </S.LinksContainer>
-        </S.SummaryContainer>
-        <S.ReturnShopping to="/">
-          <AiOutlineArrowLeft size={20} />
-          <span>Continue Shopping</span>
-        </S.ReturnShopping>
-      </S.ProductCard>
-      <Accordion />
-      {isOpenModalInfo && (
-        <S.Modal>
-          <S.ModalContent className="animation-bottom">
-            <AiFillCheckCircle fill="green" size={40} />
-            <p>Product added to cart</p>
-            <Link className="continue" to="/" onClick={handleCloseModalInfo}>
-              Continue Shopping
-            </Link>
-            <Link className="go-to" to="/Cart" onClick={handleCloseModalInfo}>
-              Go to Cart
-            </Link>
-          </S.ModalContent>
-        </S.Modal>
-      )}
-      {isOpenDropdown && (
-        <S.CartModal className="animation-top" ref={modalRef}>
-          {cartItems?.length > 0 ? (
-            <>
-              <S.ModalHeader>
-                <h1>Shopping Cart</h1>
-                <AiOutlineClose
-                  onClick={handleCloseDropdown}
-                  size={25}
-                  color="#e63946"
-                  cursor="pointer"
-                />
-              </S.ModalHeader>
-              {cartItems.map((item) => (
-                <CartDropdown
-                  key={item.id}
-                  product={item}
-                  closeDropdown={handleOpenDropdown}
-                />
-              ))}
-
-              <div className="link">
-                <Link className="buy-now-link" to="/cart">
+              <S.IconBox>
+                <p>Best Price</p>
+                <FiHeart color="#444" />
+              </S.IconBox>
+              <h3>{product.title}</h3>
+              <h4>
+                ${product.newPrice},00{' '}
+                <span>or in 5 installments of ${product.newPrice / 5},00</span>
+              </h4>
+              <S.LinksContainer>
+                <S.CustomButton onClick={handleAddProductClick}>
+                  Add Cart
+                </S.CustomButton>
+                <S.CustomLink to="/cart" onClick={handleBuyNowProductClick}>
                   Buy Now
-                </Link>
-              </div>
-            </>
-          ) : (
-            <EmptyCartDropdown handleCloseDropdown={handleCloseDropdown} />
-          )}
-        </S.CartModal>
-      )}
-      <S.Payments className="animation-bottom">
-        <S.CardsContainer>
-          <p>Payment Methods:</p>
-          <S.Cards>
-            <FaCcMastercard size={40} />
-            <FaCcVisa size={40} />
-            <FaCcApplePay size={40} />
-            <FaGooglePay size={40} />
-          </S.Cards>
-        </S.CardsContainer>
-      </S.Payments>
-    </S.ProductContainer>
+                </S.CustomLink>
+              </S.LinksContainer>
+            </S.Summary>
+          </S.ProductCard>
+          <S.ReturnShopping to="/">
+            <AiOutlineArrowLeft size={20} />
+            <span>Continue Shopping</span>
+          </S.ReturnShopping>
+        </S.ProductDetail>
+
+        <Accordion />
+
+        {isOpenModalInfo && (
+          <S.Modal>
+            <S.ModalContent className="animation-bottom">
+              <AiFillCheckCircle fill="green" size={40} />
+              <p>Product added to cart</p>
+              <Link className="continue" to="/" onClick={handleCloseModalInfo}>
+                Continue Shopping
+              </Link>
+              <Link className="go-to" to="/Cart" onClick={handleCloseModalInfo}>
+                Go to Cart
+              </Link>
+            </S.ModalContent>
+          </S.Modal>
+        )}
+        {isOpenDropdown && (
+          <S.CartModal className="animation-top" ref={modalRef}>
+            {cartItems?.length > 0 ? (
+              <>
+                <S.ModalHeader>
+                  <h1>Shopping Cart</h1>
+                  <AiOutlineClose
+                    onClick={handleCloseDropdown}
+                    size={25}
+                    color="#e63946"
+                    cursor="pointer"
+                  />
+                </S.ModalHeader>
+                {cartItems.map((item) => (
+                  <CartDropdown
+                    key={item.id}
+                    product={item}
+                    closeDropdown={handleOpenDropdown}
+                  />
+                ))}
+
+                <div className="link">
+                  <Link className="buy-now-link" to="/cart">
+                    Buy Now
+                  </Link>
+                </div>
+              </>
+            ) : (
+              <EmptyCartDropdown handleCloseDropdown={handleCloseDropdown} />
+            )}
+          </S.CartModal>
+        )}
+        <S.Payments className="animation-bottom">
+          <S.CardsContainer>
+            <p>Payment Methods:</p>
+            <S.Cards>
+              <FaCcMastercard size={40} />
+              <FaCcVisa size={40} />
+              <FaCcApplePay size={40} />
+              <FaGooglePay size={40} />
+            </S.Cards>
+          </S.CardsContainer>
+        </S.Payments>
+      </S.Content>
+    </S.Container>
   )
 }
 

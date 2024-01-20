@@ -1,9 +1,31 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const ProductContainer = styled.section`
+export const Container = styled.section`
   display: flex;
   flex-direction: column;
+`
+
+export const ProductTitle = styled.h1`
+  font-weight: 400;
+  letter-spacing: 0.2rem;
+  text-align: center;
+  margin-top: 2rem;
+`
+
+export const Content = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+`
+
+export const ProductDetail = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 2rem;
 `
 
 export const Header = styled.header`
@@ -44,15 +66,12 @@ export const CartView = styled.button`
 `
 
 export const ProductCard = styled.div`
+  width: 100%;
+  max-width: 1200px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 2rem auto;
-  padding: 0 16px;
+  margin: 2rem 0;
   gap: 3rem;
-
-  width: 100%;
-
-  max-width: 1200px;
 
   h2 {
     text-align: center;
@@ -63,11 +82,11 @@ export const ProductCard = styled.div`
   }
 `
 
-export const ProductTitle = styled.h1`
-  font-weight: 400;
-  letter-spacing: 0.2rem;
-  text-align: center;
-  margin-top: 2rem;
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 350px;
 `
 
 export const ImageBox = styled.div`
@@ -79,24 +98,22 @@ export const ImageBox = styled.div`
 `
 
 export const Reviews = styled.div`
-  margin: 2rem 0;
-
   .rating-star {
     color: #d5ab55;
   }
 `
 
 export const SizesContainer = styled.div`
+  border: 2px solid #eee;
+  padding: 1rem;
+  border-radius: 4px;
+
   h1 {
     font-size: 1rem;
     color: #9c9492;
     font-weight: 300;
     letter-spacing: 1.15px;
-    margin-bottom: 4px;
   }
-  border: 2px solid #eee;
-  padding: 1rem;
-  border-radius: 4px;
 `
 export const SizesGrid = styled.div`
   display: grid;
@@ -107,7 +124,6 @@ export const PriceContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 1rem;
 `
 
 export const CardPrice = styled.section`
@@ -134,22 +150,21 @@ export const Price = styled.div`
   }
 `
 
-export const SummaryContainer = styled.div`
+export const Summary = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   border: 2px solid #eee;
   padding: 1rem;
-  h2 {
-    margin-bottom: 2rem;
-  }
+  min-height: 350px;
 
   h3 {
-    margin-bottom: 1rem;
     letter-spacing: 1.15px;
   }
 
   h4 {
     color: #000000;
     font-size: 18px;
-    margin-bottom: 1rem;
 
     span {
       font-size: 14px;
@@ -164,7 +179,6 @@ export const SummaryContainer = styled.div`
 export const IconBox = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
   color: #9c9492;
 
   p {
@@ -178,9 +192,12 @@ export const IconBox = styled.div`
 export const LinksContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  width: 100%;
 `
 
-export const AddToCartLink = styled(Link)`
+export const CustomButton = styled.button`
+  width: 100%;
   padding: 10px 20px;
   background: transparent;
   border: none;
@@ -193,7 +210,6 @@ export const AddToCartLink = styled(Link)`
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 1.15px;
-  margin: 1rem 0;
 
   transition: all 0.3s ease-out;
 
@@ -202,7 +218,9 @@ export const AddToCartLink = styled(Link)`
     color: #fff;
   }
 `
-export const BuyNowLink = styled(Link)`
+export const CustomLink = styled(Link)`
+  display: block;
+  width: 100%;
   padding: 10px 20px;
   background-color: #4c956c;
   opacity: 1;
@@ -222,32 +240,6 @@ export const BuyNowLink = styled(Link)`
   &:hover {
     opacity: 0.8;
     color: #fff;
-  }
-`
-
-export const AddCart = styled(Link)`
-  width: 100%;
-  background-color: transparent;
-  color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  border: 1px solid #eee;
-  margin-top: 1rem;
-  padding: 10px;
-  font-weight: 600;
-  transition: all 0.5s ease;
-  text-decoration: none;
-
-  &:hover {
-    cursor: pointer;
-    background-color: #252422;
-    color: white;
-  }
-
-  svg {
-    margin-right: 0.5rem;
   }
 `
 
@@ -456,7 +448,6 @@ export const CardsContainer = styled.div`
   align-items: center;
   justify-content: start;
   max-width: 1200px;
-  padding: 1rem;
   gap: 0.5rem;
 
   @media screen and (max-width: 768px) {
