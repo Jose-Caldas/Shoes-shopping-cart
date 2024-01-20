@@ -15,6 +15,7 @@ export const Sidebar = styled.section<SidebarProps>`
     flex-direction: column;
     padding-top: 80px;
     gap: 20px;
+    z-index: 2;
 
     @media screen and (max-width: 1044px) {
       background-color: #fff;
