@@ -1,43 +1,31 @@
 import { useState } from 'react'
-import { FiChevronUp, FiChevronDown } from 'react-icons/fi'
-import data from './data'
+import accordionData from './data'
 import * as S from './styles'
+import AccordionItem from './accordionItem'
 
 function Accordion() {
-  const [clicked, setClicked] = useState<null | boolean | number>(false)
+  const [open, setOpen] = useState<any>(false)
 
   const toggle = (index: number) => {
-    if (clicked === index) {
-      return setClicked(null)
+    if (open === index) {
+      return setOpen(null)
     }
-    setClicked(index)
+    setOpen(index)
   }
 
   return (
     <S.AccordionSection className="animation-left">
-      {data.map((item, index) => (
-        <S.Container key={item.id}>
-          <S.CustomButton onClick={() => toggle(index)}>
-            {item.title}
-            <span>
-              {clicked === index ? (
-                <FiChevronUp size={25} />
-              ) : (
-                <FiChevronDown size={25} />
-              )}
-            </span>
-          </S.CustomButton>
-          {clicked === index ? (
-            <S.Dropdown
-              className={`dropdown ${
-                clicked === index ? 'active' : 'inactive'
-              }`}
-            >
-              {item.content}
-            </S.Dropdown>
-          ) : null}
-        </S.Container>
-      ))}
+      <S.Container>
+        {accordionData.map((item, index) => (
+          <AccordionItem
+            key={item.id}
+            title={item.title}
+            content={item.content}
+            open={open === index}
+            toggle={() => toggle(index)}
+          />
+        ))}
+      </S.Container>
     </S.AccordionSection>
   )
 }

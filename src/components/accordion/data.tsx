@@ -1,17 +1,17 @@
 import ProductlDetail from './items/productDetail'
 import ProductInfo from './items/productInfo'
 
-const accordionItems = [
+const accordionData = [
   {
     id: 1,
-    title: <h2>Product Information</h2>,
+    title: 'Product Information',
     content: <ProductInfo />,
   },
   {
     id: 2,
-    title: <h2>Technical Details</h2>,
+    title: 'Technical Details',
     content: <ProductlDetail />,
   },
 ]
 
-export default accordionItems
+export default accordionData

@@ -45,4 +45,8 @@ export default createGlobalStyle`
     animation: ${animate} 0.3s forwards ease-in-out;
    }
 
+  // Collapse component
+   .ReactCollapse--collapse {
+    transition: height 500ms;
+  }
 `
