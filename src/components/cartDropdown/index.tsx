@@ -10,9 +10,10 @@ import {
 
 interface CartModalProps {
   product: IProduct
+  closeDropdown: () => void
 }
 
-function CartDropdown({ product }: CartModalProps) {
+function CartDropdown({ product, closeDropdown }: CartModalProps) {
   const dispatch = useAppDispatch()
 
   const handleRemoveClick = () => {
@@ -30,7 +31,7 @@ function CartDropdown({ product }: CartModalProps) {
   return (
     <S.CartModalContainer>
       <S.Description>
-        <S.CustomLink to={`/product/${product.id}`}>
+        <S.CustomLink to={`/product/${product.id}`} onClick={closeDropdown}>
           <S.ImageBox>
             <img src={product.img} alt={product.title} />
           </S.ImageBox>

@@ -65,7 +65,7 @@ function Product() {
     setIsOpenModalInfo(false)
   }
 
-  const handleOpenModal = () => {
+  const handleOpenDropdown = () => {
     setIsOpenDropdown(!isOpenDropdown)
   }
   const handleCloseDropdown = () => {
@@ -97,7 +97,7 @@ function Product() {
       <S.Header>
         <S.HeaderContent>
           <S.Logo to="/">SH🛒PPING</S.Logo>
-          <S.CartView onClick={handleOpenModal} disabled={isOpenDropdown}>
+          <S.CartView onClick={handleOpenDropdown} disabled={isOpenDropdown}>
             <AiOutlineShoppingCart color="#fff" size={30} />
             <p>({productsCount})</p>
           </S.CartView>
@@ -195,7 +195,11 @@ function Product() {
                 />
               </S.ModalHeader>
               {cartItems.map((item) => (
-                <CartDropdown key={item.id} product={item} />
+                <CartDropdown
+                  key={item.id}
+                  product={item}
+                  closeDropdown={handleOpenDropdown}
+                />
               ))}
 
               <div className="link">

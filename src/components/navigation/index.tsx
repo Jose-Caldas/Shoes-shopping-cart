@@ -15,23 +15,26 @@ export type NavigationProps = {
 }
 
 function Navigation({ handleInputChange, query }: NavigationProps) {
-  const modalRef = useRef<HTMLDivElement | null>(null)
+  const dropdownRef = useRef<HTMLDivElement | null>(null)
 
-  const [isModalOpen, setIsmodalOpen] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const productsCount = useAppSelector(selectProductsCount)
   const { products } = useAppSelector((state) => state.cart)
 
-  const handleOpenModal = () => {
-    setIsmodalOpen(!isModalOpen)
+  const handleOpenDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen)
   }
   const handleCloseDropdown = () => {
-    setIsmodalOpen(false)
+    setIsDropdownOpen(false)
   }
 
   useEffect(() => {
     let handler = (e: { target: any }) => {
-      if (modalRef.current !== null && !modalRef.current.contains(e.target)) {
-        setIsmodalOpen(false)
+      if (
+        dropdownRef.current !== null &&
+        !dropdownRef.current.contains(e.target)
+      ) {
+        setIsDropdownOpen(false)
       }
     }
     document.addEventListener('mousedown', handler)
@@ -55,14 +58,14 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
       />
 
       <S.Profile>
-        <S.CartView onClick={handleOpenModal} disabled={isModalOpen}>
+        <S.CartView onClick={handleOpenDropdown} disabled={isDropdownOpen}>
           <AiOutlineShoppingCart color="#fff" size={30} />
           <p>({productsCount})</p>
         </S.CartView>
       </S.Profile>
 
-      {isModalOpen && (
-        <S.Modal className="animation-top" ref={modalRef}>
+      {isDropdownOpen && (
+        <S.Modal className="animation-top" ref={dropdownRef}>
           {products.length > 0 ? (
             <>
               <S.ModalHeader>
@@ -75,7 +78,11 @@ function Navigation({ handleInputChange, query }: NavigationProps) {
                 />
               </S.ModalHeader>
               {products.map((product) => (
-                <CartDropdown key={product.id} product={product} />
+                <CartDropdown
+                  key={product.id}
+                  product={product}
+                  closeDropdown={handleCloseDropdown}
+                />
               ))}
               <div className="link">
                 <Link className="buy-now-link" to="/cart">
