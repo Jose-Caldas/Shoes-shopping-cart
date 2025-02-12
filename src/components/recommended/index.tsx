@@ -17,7 +17,6 @@ function Recommended({ handleClick }: RecommendedProps) {
   return (
     <>
       <S.Container>
-        <S.RecommendedTitle>Recommended</S.RecommendedTitle>
         <S.RecommendedFlex>
           <Button onClickHandler={handleClick} value="" title="All Products" />
           <Button onClickHandler={handleClick} value="Nike" title="Nike" />
